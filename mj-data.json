@@ -72,7 +72,7 @@
         }
       },
       {
-        "image": "assets/img/qn-logo.png",
+        "image": "mjv1/assets/img/qn-logo.png",
         "className": "qn-btn",
         "width": 32,
         "height": 32,
@@ -235,7 +235,7 @@
         }
       },
       {
-        "logo": "assets/img/qn-logo.png",
+        "logo": "mjv1/assets/img/qn-logo.png",
         "logoAlt": "কুরআন নেভিগেশন লোগো",
         "title": {
           "bn": "কুরআন নেভিগেশন",
