@@ -1,5 +1,5 @@
 {
-  "version": "20261103",
+  "version": "20261105",
   "meta": {
     "title": {
       "bn": "এম জে আহমাদ (MJ Ahmad) — প্রযুক্তি, জ্ঞান সংরক্ষণ ও জনকল্যাণমুখী অবকাঠামো",
@@ -69,6 +69,18 @@
           "bn": "কোরআনের ফেরিওয়ালা",
           "en": "Quraner Fariwala",
           "ar": "بائع القرآن"
+        }
+      },
+      {
+        "image": "assets/img/qn-logo.png",
+        "className": "qn-btn",
+        "width": 32,
+        "height": 32,
+        "url": "https://mj-ahmad.github.io/qn/",
+        "label": {
+          "bn": "কুরআন নেভিগেশন",
+          "en": "Quran Navigation",
+          "ar": "ملاحة القرآن"
         }
       }
     ],
@@ -223,99 +235,31 @@
         }
       },
       {
-        "logo": "assets/img/qf-logo.png",
-        "logoAlt": "কোরআন নেভিগেশন প্ল্যাটফর্ম লোগো",
+        "logo": "assets/img/qn-logo.png",
+        "logoAlt": "কুরআন নেভিগেশন লোগো",
         "title": {
-          "bn": "কোরআন নেভিগেশন প্ল্যাটফর্ম",
-          "en": "Qur'an Navigation Platform",
-          "ar": "منصة التنقل في القرآن الكريم"
+          "bn": "কুরআন নেভিগেশন",
+          "en": "Quran Navigation",
+          "ar": "ملاحة القرآن"
         },
         "status": {
-          "bn": "উন্নয়নাধীন",
-          "en": "Under development",
-          "ar": "قيد التطوير"
+          "bn": "লাইভ · সংস্করণ 1.2.1",
+          "en": "Live · version 1.2.1",
+          "ar": "متاح · الإصدار 1.2.1"
         },
         "desc": {
-          "bn": "কোরআনের ফেরিওয়ালা উদ্যোগের অংশ হিসেবে নির্মাণাধীন একটি পরবর্তী প্রজন্মের কোরআন নেভিগেশন ও গবেষণা প্ল্যাটফর্ম।",
-          "en": "A next-generation Qur'an navigation and research platform being developed as part of the Quraner Fariwala infrastructure.",
-          "ar": "منصة معرفية متقدمة تهدف إلى تحويل تجربة التعامل مع القرآن الكريم من مجرد تصفح للمصحف إلى بيئة متكاملة للاستكشاف والبحث والتعلم والتدبر."
-        },
-        "plannedFeaturesLabel": {
-          "bn": "পরিকল্পিত বৈশিষ্ট্যসমূহ:",
-          "en": "Planned features include:",
-          "ar": "وتشمل الخصائص المخطط لها:"
-        },
-        "plannedFeatures": [
-          {
-            "bn": "ভেক্টরভিত্তিক মুসহাফ পৃষ্ঠা",
-            "en": "Vector-based Mushaf pages",
-            "ar": "صفحات مصحف عالية الدقة قائمة على الرسوم المتجهية"
-          },
-          {
-            "bn": "আয়াতভিত্তিক নেভিগেশন",
-            "en": "Ayah-aware navigation",
-            "ar": "التنقل والتفاعل على مستوى الآية"
-          },
-          {
-            "bn": "সূরা, জুয, হিযব, রুকু ও পৃষ্ঠা নেভিগেশন",
-            "en": "Surah, Juz, Hizb, Ruku and page navigation",
-            "ar": "التنقل بحسب السورة والجزء والحزب والركوع والصفحة"
-          },
-          {
-            "bn": "বহুভাষিক অনুবাদ",
-            "en": "Multi-language translations",
-            "ar": "ترجمات متعددة اللغات"
-          },
-          {
-            "bn": "একাধিক তাফসীর উৎসের সমন্বয়",
-            "en": "Multi-source Tafseer integration",
-            "ar": "تكامل مصادر التفسير الموثوقة"
-          },
-          {
-            "bn": "শব্দমূলভিত্তিক অনুসন্ধান",
-            "en": "Root-word search",
-            "ar": "البحث اللفظي والاشتقاقي والجذري"
-          },
-          {
-            "bn": "অর্থভিত্তিক অনুসন্ধান",
-            "en": "Semantic search",
-            "ar": "البحث الدلالي والموضوعي"
-          },
-          {
-            "bn": "তিলাওয়াত ও অডিও সমন্বয়",
-            "en": "Audio synchronization",
-            "ar": "مزامنة التلاوة الصوتية مع النص"
-          },
-          {
-            "bn": "বিষয়ভ���ত্তিক অনুসন্ধান ও জ্ঞান অন্বেষণ",
-            "en": "Topic and concept exploration",
-            "ar": "استكشاف المفاهيم والموضوعات القرآنية"
-          },
-          {
-            "bn": "আন্তঃসংযুক্ত কোরআনিক জ্ঞান নেটওয়ার্ক",
-            "en": "Cross-referenced Qur'anic knowledge network",
-            "ar": "الربط المعرفي بين الآيات والتفاسير والموضوعات والمفاهيم"
-          },
-          {
-            "bn": "গবেষণা ও অধ্যয়নের কর্মপরিবেশ",
-            "en": "Research and study workspaces",
-            "ar": "بيئة متخصصة للبحث والدراسة والتأمل العلمي"
-          }
-        ],
-        "objective": {
-          "bn": "এর লক্ষ্য হলো কোরআনকে শুধু পৃষ্ঠাসমূহের একটি গ্রন্থ হিসেবে নয়, বরং গভীরভাবে সংযুক্ত, অনুসন্ধানযোগ্য এবং অন্বেষণযোগ্য একটি জ্ঞানব্যবস্থা হিসেবে উপস্থাপন করা।",
-          "en": "Its objective is to transform the Qur'an from a collection of pages into a deeply connected, searchable and explorable knowledge system.",
-          "ar": "وتهدف المنصة إلى تقديم القرآن الكريم بوصفه شبكة معرفية مترابطة، تُمكّن القارئ والباحث من الانتقال بسلاسة بين الآيات والمعاني والتفاسير والموضوعات ذات الصلة، بما يعين على الفهم والتعلم والتدبر."
+          "bn": "অফলাইনে কাজ করা একটি কুরআন নেভিগেশন ওয়েবসাইট: পৃষ্ঠা, সূরা, জুয, হিযব, রুকু, আয়াত, সিজদা ও বিষয় অনুযায়ী পাঠ, তিলাওয়াতের অডিও, তাজবীদ পাঠ এবং হিফয ট্র্যাকার। ইংরেজি, বাংলা ও আরবিতে ব্যবহারযোগ্য; ফোনে ইনস্টল করা যায়।",
+          "en": "An offline-capable Quran navigation website: browse by page, surah, juz, hizb, rukuh, ayah, sajdah, topic and bookmark, with recitation audio, tajweed lessons and a hifz tracker. Available in English, Bangla and Arabic, and installable on phones.",
+          "ar": "موقع للتنقل في القرآن الكريم يعمل دون اتصال: التصفح بالصفحة والسورة والجزء والحزب والركوع والآية والسجدة والموضوع والإشارات المرجعية، مع التلاوة الصوتية ودروس التجويد ومتابعة الحفظ. متاح بالإنجليزية والبنغالية والعربية، ويمكن تثبيته على الهاتف."
         },
         "cta": {
           "text": {
-            "bn": "প্রকল্পের বিবরণ",
-            "en": "Project details",
-            "ar": "تفاصيل المشروع"
+            "bn": "কুরআন নেভিগেশন খুলুন",
+            "en": "Open Quran Navigation",
+            "ar": "فتح ملاحة القرآن"
           },
-          "url": "",
-          "external": true,
-          "disabled": true
+          "url": "https://mj-ahmad.github.io/qn/",
+          "external": true
         }
       },
       {
@@ -442,7 +386,7 @@
       "en": "Last updated:",
       "ar": "آخر تحديث:"
     },
-    "lastUpdated": "2026-11-03T15:24:53+06:00",
+    "lastUpdated": "2026-11-05T22:00:00+06:00",
     "clockLabel": {
       "bn": "ঢাকা এখন:",
       "en": "Dhaka now:",
