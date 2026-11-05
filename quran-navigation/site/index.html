@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Quran Navigation — browse the Quran by surah, juz, hizb, page, ayah and topic. English, বাংলা and العربية.">
+  <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Quran Nav">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Quran Navigation</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/favicon.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* Apply saved theme before first paint to avoid a flash. */
+    (function () {
+      try {
+        var m = localStorage.getItem("qn_theme");
+        if (m === "light" || m === "dark") document.documentElement.setAttribute("data-theme", m);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="lang-en">
+  <header class="app-head" id="appHead">
+    <div class="topbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="" width="40" height="40">
+        <div>
+          <h1 data-i18n="appName">Quran Navigation</h1>
+          <p class="tagline" data-i18n="tagline"></p>
+        </div>
+      </div>
+      <button id="installBtn" class="icon-btn install-btn" type="button" hidden></button>
+      <button id="langToggle" class="icon-btn lang-btn" type="button"></button>
+      <button id="themeToggle" class="icon-btn" type="button"></button>
+    </div>
+    <nav class="catnav" aria-label="Navigation">
+      <div class="catbar" id="catbar"></div>
+      <button id="menuBtn" class="menubtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="megaMenu"></button>
+    </nav>
+    <div class="offline-bar" id="offlineBar" hidden></div>
+  </header>
+
+  <div id="megaMenu" class="mega" role="dialog" aria-modal="true" aria-labelledby="menuTitle" hidden>
+    <div class="mega-panel">
+      <div class="mega-head">
+        <h2 id="menuTitle">Navigation</h2>
+        <button id="menuClose" class="btn ghost" type="button">Close</button>
+      </div>
+      <div class="mega-grid" id="megaGrid"></div>
+      <p class="muted kbd">Esc · /</p>
+    </div>
+  </div>
+
+  <main id="app"></main>
+  <footer data-i18n="footer">Quran Navigation</footer>
+
+  <script src="data/quran.js"></script>
+  <script src="data/surahs.js"></script>
+  <script src="data/reciters.js"></script>
+  <script src="data/hizb.js"></script>
+  <script src="data/rukuh.js"></script>
+  <script src="data/sajdah.js"></script>
+  <script src="data/topics.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/i18n-nav.js"></script>
+  <script src="js/i18n-pwa.js"></script>
+  <script src="js/i18n-hifz.js"></script>
+  <script src="js/hifz-core.js"></script>
+  <script src="js/hifz.js"></script>
+  <script src="data/tajweed-lessons.js"></script>
+  <script src="data/manzumah.js"></script>
+  <script src="js/i18n-tajweed.js"></script>
+  <script src="js/tajweed-core.js"></script>
+  <script src="js/tajweed.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "quran-navigation",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Quran navigation, recitation audio and hifz tracker (static PWA).",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "node tests/hifz-core.test.js && node tests/tajweed-core.test.js && node tests/data.test.js",
+    "check": "node scripts/check.js",
+    "serve": "python3 -m http.server --directory site 8000"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

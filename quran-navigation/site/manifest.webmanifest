@@ -1,0 +1,26 @@
+{
+  "name": "Quran Navigation",
+  "short_name": "Quran Nav",
+  "description": "Navigate the Quran by surah, juz, hizb, page, ayah, sajdah and topic. English, বাংলা and العربية, with recitation audio.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#0c0f14",
+  "theme_color": "#0c0f14",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["books", "education", "lifestyle"],
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Surah", "short_name": "Surah", "url": "./#/", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Juz", "short_name": "Juz", "url": "./#/juz", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Bookmarks", "short_name": "Bookmarks", "url": "./#/bookmark", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "id": "/",
+  "name": "Quran Navigation",
+  "short_name": "QuranNav",
+  "description": "A mobile-first Quran navigation and reading platform developed as part of the MJ Ahmad Quran Navigator Project.",
+  "lang": "en",
+  "dir": "ltr",
+
+  "start_url": "/",
+  "scope": "/",
+
+  "display": "standalone",
+  "orientation": "portrait-primary",
+
+  "background_color": "#000000",
+  "theme_color": "#DDB441",
+
+  "categories": [
+    "education",
+    "reference",
+    "books",
+    "religion"
+  ],
+
+  "iarc_rating_id": "",
+
+  "screenshots": [],
+
+  "icons": [
+    {
+      "src": "/logos/app-icons/app-icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/logos/app-icons/app-icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/logos/app-icons/android-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logos/app-icons/android-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/app-icons/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Read Quran",
+      "short_name": "Read",
+      "url": "/"
+    },
+    {
+      "name": "Quran Pages",
+      "short_name": "Pages",
+      "url": "/pages"
+    }
+  ],
+
+  "prefer_related_applications": false,
+
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+
+  "edge_side_panel": {
+    "preferred_width": 420
+  },
+
+  "author": "MJ Ahmad",
+  "organization": "Quraner Fariwala",
+  "project": "Quran Navigation",
+  "initiative": "MJ Ahmad Quran Navigator Project",
+
+  "homepage_url": "https://mj-ahmad.github.io",
+  "project_url": "https://mj-ahmad.github.io/qn",
+
+  "repository": "https://mj-ahmad.github.io/qn",
+
+  "metadata": {
+    "maintainer": "MJ Ahmad",
+    "organization": "Quraner Fariwala",
+    "version": "1.0.0",
+    "license": "All Rights Reserved",
+    "last_updated": "2026-11-05"
+  }
+}
