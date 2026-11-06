@@ -1,0 +1,80 @@
+/* Strings for the footer, splash and share sheet. Merged into window.I18N after i18n.js. */
+(function () {
+  var S = {
+    en: {
+      devBy: "Developed by",
+      orgLine: "Quraner Fariwala · MJ Ahmad Quran Navigator Project",
+      lastUpdated: "Last updated",
+      clockDhaka: "Dhaka time",
+      zoneDhaka: "UTC+6 · Bangladesh",
+      zoneUtc: "Coordinated Universal Time",
+      rights: "All rights reserved",
+      versionLabel: "Version",
+      shareBtn: "Share",
+      aboutDev: "About the developer",
+      shareTitle: "Share Quran Navigation",
+      shareText: "Quran Navigation — browse the Quran by surah, juz, page and verse",
+      shareNative: "More apps",
+      shareCopy: "Copy link",
+      shareWhatsApp: "WhatsApp",
+      shareMessenger: "Messenger",
+      shareFacebook: "Facebook",
+      shareTelegram: "Telegram",
+      shareX: "X (Twitter)",
+      shareBtnLabel: "Share this app",
+      copied: "Link copied",
+      copyFailed: "Could not copy. Select the link below and copy it."
+    },
+    bn: {
+      devBy: "ডেভেলপ করেছেন",
+      orgLine: "Quraner Fariwala · MJ Ahmad Quran Navigator Project",
+      lastUpdated: "সর্বশেষ আপডেট",
+      clockDhaka: "ঢাকার সময়",
+      zoneDhaka: "UTC+6 · বাংলাদেশ",
+      zoneUtc: "সমন্বিত সার্বজনীন সময়",
+      rights: "সর্বস্বত্ব সংরক্ষিত",
+      versionLabel: "সংস্করণ",
+      shareBtn: "শেয়ার করুন",
+      aboutDev: "ডেভেলপার সম্পর্কে",
+      shareTitle: "কুরআন নেভিগেশন শেয়ার করুন",
+      shareText: "কুরআন নেভিগেশন — সূরা, পারা, পৃষ্ঠা ও আয়াত দিয়ে কুরআন খুঁজুন",
+      shareNative: "অন্যান্য অ্যাপ",
+      shareCopy: "লিংক কপি করুন",
+      shareWhatsApp: "হোয়াটসঅ্যাপ",
+      shareMessenger: "মেসেঞ্জার",
+      shareFacebook: "ফেসবুক",
+      shareTelegram: "টেলিগ্রাম",
+      shareX: "X (টুইটার)",
+      shareBtnLabel: "এই অ্যাপটি শেয়ার করুন",
+      copied: "লিংক কপি হয়েছে",
+      copyFailed: "কপি করা যায়নি। নিচের লিংকটি সিলেক্ট করে কপি করুন।"
+    },
+    ar: {
+      devBy: "طوّره",
+      orgLine: "Quraner Fariwala · MJ Ahmad Quran Navigator Project",
+      lastUpdated: "آخر تحديث",
+      clockDhaka: "توقيت دكا",
+      zoneDhaka: "UTC+6 · بنغلاديش",
+      zoneUtc: "التوقيت العالمي المنسّق",
+      rights: "جميع الحقوق محفوظة",
+      versionLabel: "الإصدار",
+      shareBtn: "مشاركة",
+      aboutDev: "عن المطوّر",
+      shareTitle: "مشاركة ملاحة القرآن",
+      shareText: "ملاحة القرآن — تصفح القرآن حسب السورة والجزء والصفحة والآية",
+      shareNative: "تطبيقات أخرى",
+      shareCopy: "نسخ الرابط",
+      shareWhatsApp: "واتساب",
+      shareMessenger: "ماسنجر",
+      shareFacebook: "فيسبوك",
+      shareTelegram: "تيليجرام",
+      shareX: "X (تويتر)",
+      shareBtnLabel: "مشاركة هذا التطبيق",
+      copied: "تم نسخ الرابط",
+      copyFailed: "تعذّر النسخ. حدّد الرابط أدناه وانسخه."
+    }
+  };
+  Object.keys(S).forEach(function (lang) {
+    if (window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], S[lang]);
+  });
+})();

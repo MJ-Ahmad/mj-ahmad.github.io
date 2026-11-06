@@ -1,0 +1,28 @@
+{
+  "id": "./",
+  "name": "Quran Navigation · কুরআন নেভিগেশন",
+  "short_name": "Quran Nav",
+  "description": "Browse the Quran by surah, juz, hizb, page, ayah, sajdah and topic, with recitation audio. English, বাংলা and العربية.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "categories": ["books", "education", "reference", "lifestyle"],
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Surah", "short_name": "Surah", "url": "./#/", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Juz", "short_name": "Juz", "url": "./#/juz", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Bookmarks", "short_name": "Bookmarks", "url": "./#/bookmark", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] }
+  ],
+  "author": "MJ Ahmad",
+  "developer": { "name": "MJ Ahmad", "url": "https://mj-ahmad.github.io/mj/" }
+}

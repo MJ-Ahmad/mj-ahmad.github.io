@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self' https://everyayah.com; connect-src 'self'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'">
+
+  <!-- Theme colour and colour scheme -->
+  <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Search and sharing -->
+  <title>Quran Navigation · কুরআন নেভিগেশন</title>
+  <meta name="description" content="Quran Navigation — browse the Quran by surah, juz, hizb, page, ayah and topic, with recitation audio. কুরআন নেভিগেশন — সূরা, পারা, পৃষ্ঠা ও আয়াত অনুযায়ী কুরআন খুঁজুন। ملاحة القرآن.">
+  <meta name="keywords" content="Quran, Quran navigation, Mushaf, surah, juz, hizb, ayah, Quran audio, কুরআন, সূরা, পারা, আল কুরআন, ملاحة القرآن">
+  <meta name="author" content="MJ Ahmad">
+  <meta name="application-name" content="Quran Navigation">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://mj-ahmad.github.io/qn/">
+
+  <!-- Open Graph (Facebook, Messenger, WhatsApp, Telegram, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Quran Navigation">
+  <meta property="og:title" content="Quran Navigation · কুরআন নেভিগেশন">
+  <meta property="og:description" content="Browse the Quran by surah, juz, hizb, page and verse, with recitation audio. সূরা, পারা, পৃষ্ঠা ও আয়াত অনুযায়ী কুরআন খুঁজুন।">
+  <meta property="og:url" content="https://mj-ahmad.github.io/qn/">
+  <meta property="og:image" content="https://mj-ahmad.github.io/qn/assets/og-image.png">
+  <meta property="og:image:secure_url" content="https://mj-ahmad.github.io/qn/assets/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Quran Navigation logo on a dark background">
+  <meta property="og:locale" content="bn_BD">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ar_AR">
+
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quran Navigation · কুরআন নেভিগেশন">
+  <meta name="twitter:description" content="Browse the Quran by surah, juz, hizb, page and verse, with recitation audio.">
+  <meta name="twitter:image" content="https://mj-ahmad.github.io/qn/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Quran Navigation logo on a dark background">
+
+  <!-- Installable app (PWA) and iOS -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Quran Nav">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="assets/icon-180.png" sizes="180x180">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://mj-ahmad.github.io/qn/#website",
+        "url": "https://mj-ahmad.github.io/qn/",
+        "name": "Quran Navigation",
+        "alternateName": ["কুরআন নেভিগেশন", "ملاحة القرآن"],
+        "inLanguage": ["en", "bn", "ar"],
+        "author": { "@id": "https://mj-ahmad.github.io/mj/#person" }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Quran Navigation",
+        "url": "https://mj-ahmad.github.io/qn/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any (Web, Android, iOS)",
+        "browserRequirements": "Requires JavaScript",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://mj-ahmad.github.io/mj/#person" },
+        "creator": { "@id": "https://mj-ahmad.github.io/mj/#person" },
+        "image": "https://mj-ahmad.github.io/qn/assets/icon-512.png"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://mj-ahmad.github.io/mj/#person",
+        "name": "MJ Ahmad",
+        "url": "https://mj-ahmad.github.io/mj/",
+        "sameAs": ["https://mj-ahmad.github.io/mj/", "https://mj-ahmad.github.io"],
+        "worksFor": { "@type": "Organization", "name": "Quraner Fariwala" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme-init.js"></script>
+</head>
+<body class="lang-en">
+  <!-- Splash screen: shown until the app has loaded (see js/splash.js) -->
+  <div id="splash" class="splash" role="status" aria-live="polite" aria-label="Quran Navigation, loading">
+    <div class="splash-inner">
+      <img class="splash-mark" src="assets/logo.png" alt="" width="112" height="112" decoding="async">
+      <p class="splash-name">Quran Navigation</p>
+      <p class="splash-name splash-bn" lang="bn">কুরআন নেভিগেশন</p>
+      <p class="splash-name splash-ar" lang="ar" dir="rtl">ملاحة القرآن</p>
+      <div class="splash-bar" aria-hidden="true"><span></span></div>
+      <p class="splash-credit">Developed by <strong>MJ Ahmad</strong></p>
+    </div>
+  </div>
+
+  <header class="app-head" id="appHead">
+    <div class="topbar">
+      <a class="brand" href="#/" aria-label="Quran Navigation — home">
+        <img src="assets/logo.png" alt="" width="40" height="40">
+        <div>
+          <h1 data-i18n="appName">Quran Navigation</h1>
+          <p class="tagline" data-i18n="tagline"></p>
+        </div>
+      </a>
+      <button id="installBtn" class="icon-btn install-btn" type="button" hidden></button>
+      <button id="shareBtn" class="icon-btn share-btn" type="button" aria-haspopup="dialog"></button>
+      <button id="langToggle" class="icon-btn lang-btn" type="button"></button>
+      <button id="themeToggle" class="icon-btn" type="button"></button>
+    </div>
+    <nav class="catnav" aria-label="Navigation">
+      <div class="catbar" id="catbar"></div>
+      <button id="menuBtn" class="menubtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="megaMenu"></button>
+    </nav>
+    <div class="offline-bar" id="offlineBar" hidden></div>
+  </header>
+
+  <div id="megaMenu" class="mega" role="dialog" aria-modal="true" aria-labelledby="menuTitle" hidden>
+    <div class="mega-panel">
+      <div class="mega-head">
+        <h2 id="menuTitle">Navigation</h2>
+        <button id="menuClose" class="btn ghost" type="button">Close</button>
+      </div>
+      <div class="mega-grid" id="megaGrid"></div>
+      <p class="muted kbd">Esc · /</p>
+    </div>
+  </div>
+
+  <main id="app"></main>
+
+  <footer class="site-foot" id="siteFoot">
+    <div class="foot-main">
+      <p class="foot-dev">
+        <span data-i18n="devBy">Developed by</span>
+        <a href="https://mj-ahmad.github.io/mj/" target="_blank" rel="author noopener noreferrer" class="foot-author">MJ Ahmad</a>
+      </p>
+      <p class="foot-org" data-i18n="orgLine">Quraner Fariwala · MJ Ahmad Quran Navigator Project</p>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-cell">
+        <span class="foot-label" data-i18n="lastUpdated">Last updated</span>
+        <time class="foot-value" id="lastUpdated" datetime="2026-11-05">5 Nov 2026</time>
+        <span class="foot-sub" data-i18n="zoneDhaka">UTC+6 · Bangladesh</span>
+      </div>
+      <div class="foot-cell">
+        <span class="foot-label" data-i18n="clockDhaka">Dhaka (UTC+6)</span>
+        <time class="foot-value foot-clock" id="clockDhaka" aria-label="Current time in Dhaka"></time>
+        <span class="foot-sub" data-i18n="zoneDhaka">UTC+6 · Bangladesh</span>
+      </div>
+      <div class="foot-cell">
+        <span class="foot-label">UTC</span>
+        <time class="foot-value foot-clock" id="clockUtc" aria-label="Current time in UTC"></time>
+        <span class="foot-sub" data-i18n="zoneUtc">Coordinated Universal Time</span>
+      </div>
+    </div>
+
+    <div class="foot-actions">
+      <button id="shareLink" class="foot-share" type="button" aria-haspopup="dialog" data-i18n="shareBtn">Share</button>
+      <a href="https://mj-ahmad.github.io/mj/" target="_blank" rel="noopener noreferrer" class="foot-link" data-i18n="aboutDev">About the developer</a>
+    </div>
+
+    <p class="foot-legal">
+      © <span id="copyYear">2026</span> MJ Ahmad · <span data-i18n="rights">All rights reserved</span>
+      · <span data-i18n="versionLabel">Version</span> <span id="appVersion">1.2.1</span>
+    </p>
+  </footer>
+
+  <div id="shareSheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="shareTitle" hidden>
+    <div class="sheet-panel">
+      <div class="sheet-head">
+        <h2 id="shareTitle" data-i18n="shareTitle">Share Quran Navigation</h2>
+        <button id="shareClose" class="btn ghost" type="button" data-i18n="close">Close</button>
+      </div>
+      <div class="share-grid" id="shareGrid"></div>
+      <p class="share-url" id="shareUrl"></p>
+    </div>
+  </div>
+
+  <script src="js/site-meta.js"></script>
+  <script src="data/quran.js"></script>
+  <script src="data/surahs.js"></script>
+  <script src="data/reciters.js"></script>
+  <script src="data/hizb.js"></script>
+  <script src="data/rukuh.js"></script>
+  <script src="data/sajdah.js"></script>
+  <script src="data/topics.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/i18n-site.js"></script>
+  <script src="js/i18n-nav.js"></script>
+  <script src="js/i18n-pwa.js"></script>
+  <script src="js/i18n-hifz.js"></script>
+  <script src="js/hifz-core.js"></script>
+  <script src="js/hifz.js"></script>
+  <script src="data/tajweed-lessons.js"></script>
+  <script src="data/manzumah.js"></script>
+  <script src="js/i18n-tajweed.js"></script>
+  <script src="js/tajweed-core.js"></script>
+  <script src="js/tajweed.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/share.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/splash.js"></script>
+</body>
+</html>

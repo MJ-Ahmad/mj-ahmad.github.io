@@ -1,0 +1,83 @@
+/* Hifz tracker strings (English, Bangla, Arabic). */
+(function () {
+  var H = {
+    en: {
+      catHifz: "Hifz", descHifz: "Track sabaq, dohor and manzil",
+      hifzTitle: "Hifz tracker", hifzProgress: "{n} / {t} pages memorized", hifzRemaining: "{n} pages remaining",
+      hifzAddSabaq: "Add today's sabaq", hifzFrom: "From page", hifzTo: "To page", hifzSave: "Save",
+      hifzSabaqHint: "Mushaf pages (15 lines each). Up to 20 pages per sabaq.",
+      hifzSabaqList: "Sabaq records", hifzNoSabaq: "No sabaq yet. Add today's lesson above.",
+      hifzPages: "Pages {a}–{b}", hifzStatusDone: "Done", hifzStatusPlanned: "Planned",
+      hifzMistakes: "Mistakes", hifzDone: "Mark done", hifzUndo: "Undo", hifzDelete: "Delete",
+      hifzDeleteConfirm: "Delete this sabaq record?",
+      hifzDueReviews: "Dohor due today", hifzNoDue: "Nothing due for review today.",
+      hifzAfterDays: "Review after {n} day(s)", hifzReviewed: "Reviewed",
+      hifzManzil: "Manzil (long revision) today", hifzManzilEmpty: "Complete a sabaq first; manzil starts with memorized pages.",
+      hifzMarkManzil: "Mark manzil done", hifzManzilDone: "Manzil done for today. Well done.",
+      hifzPace: "Pace calculator", hifzPagesPerDay: "Pages per day",
+      hifzPaceResult: "At this pace, about {n} day(s) to finish the Quran.", hifzPaceInvalid: "Enter a number above 0.",
+      hifzBackup: "Backup and restore", hifzExport: "Export backup", hifzImport: "Import backup", hifzClear: "Clear all data",
+      hifzClearConfirm: "Delete all hifz records on this device? Export a backup first.",
+      hifzBackupNote: "Records are stored only on this device. Export regularly to keep a copy.",
+      hifzSave: "Save", hifzDisclaimer: "This tracker supports, but does not replace, your teacher's guidance.",
+      hifzErrRange: "Enter valid page numbers: 1–604, and 'from' must not be after 'to'.",
+      hifzErrTooLong: "A sabaq can be at most 20 pages.", hifzErrOverlap: "These pages overlap an existing record.",
+      hifzSaveErr: "Could not save on this device (storage is full or blocked).",
+      hifzLoadWarn: "Saved hifz data could not be read and was reset. Restore from a backup if you have one.",
+      hifzImportOk: "Backup restored.", hifzImportErr: "This file is not a valid Quran Navigation hifz backup."
+    },
+    bn: {
+      catHifz: "হিফজ", descHifz: "সবক, দোহর ও মানজিল ট্র্যাক করুন",
+      hifzTitle: "হিফজ ট্র্যাকার", hifzProgress: "{n} / {t} পৃষ্ঠা মুখস্থ", hifzRemaining: "আর {n} পৃষ্ঠা বাকি",
+      hifzAddSabaq: "আজকের সবক যোগ করুন", hifzFrom: "থেকে পৃষ্ঠা", hifzTo: "পর্যন্ত পৃষ্ঠা", hifzSave: "সংরক্ষণ",
+      hifzSabaqHint: "মদীনা মুসহাফ (প্রতি পৃষ্ঠায় ১৫ লাইন)। একটি সবকে সর্বোচ্চ ২০ পৃষ্ঠা।",
+      hifzSabaqList: "সবকের তালিকা", hifzNoSabaq: "এখনও কোনো সবক নেই। উপরে আজকের সবক যোগ করুন।",
+      hifzPages: "পৃষ্ঠা {a}–{b}", hifzStatusDone: "সম্পন্ন", hifzStatusPlanned: "পরিকল্পিত",
+      hifzMistakes: "ভুল", hifzDone: "সম্পন্ন চিহ্নিত", hifzUndo: "ফিরিয়ে নিন", hifzDelete: "মুছুন",
+      hifzDeleteConfirm: "এই সবকের রেকর্ড মুছবেন?",
+      hifzDueReviews: "আজকের দোহর", hifzNoDue: "আজ দোহরের কিছু নেই।",
+      hifzAfterDays: "{n} দিন পর দোহর", hifzReviewed: "দোহর সম্পন্ন",
+      hifzManzil: "আজকের মানজিল (দীর্ঘ পুনরাবৃত্তি)", hifzManzilEmpty: "আগে একটি সবক সম্পন্ন করুন; মানজিল মুখস্থ পৃষ্ঠা থেকে শুরু হয়।",
+      hifzMarkManzil: "মানজিল সম্পন্ন", hifzManzilDone: "আজকের মানজিল সম্পন্ন। মাশাআল্লাহ।",
+      hifzPace: "গতি হিসাব", hifzPagesPerDay: "প্রতিদিন পৃষ্ঠা",
+      hifzPaceResult: "এই গতিতে প্রায় {n} দিনে শেষ হবে।", hifzPaceInvalid: "০-এর বেশি একটি সংখ্যা লিখুন।",
+      hifzBackup: "ব্যাকআপ ও পুনরুদ্ধার", hifzExport: "ব্যাকআপ নিন", hifzImport: "ব্যাকআপ আনুন", hifzClear: "সব ডেটা মুছুন",
+      hifzClearConfirm: "এই ডিভাইসের সব হিফজ রেকর্ড মুছবেন? আগে ব্যাকআপ নিন।",
+      hifzBackupNote: "রেকর্ড শুধু এই ডিভাইসে সংরক্ষিত। নিয়মিত ব্যাকআপ রাখুন।",
+      hifzDisclaimer: "এই ট্র্যাকার শিক্ষকের নির্দেশনার সহায়ক, বিকল্প নয়।",
+      hifzErrRange: "সঠিক পৃষ্ঠা নম্বর লিখুন: ১–৬০৪, এবং 'থেকে' 'পর্যন্ত'-এর চেয়ে বড় হবে না।",
+      hifzErrTooLong: "একটি সবকে সর্বোচ্চ ২০ পৃষ্ঠা।", hifzErrOverlap: "এই পৃষ্ঠাগুলো আগের একটি রেকর্ডের সাথে মিলে যাচ্ছে।",
+      hifzSaveErr: "এই ডিভাইসে সংরক্ষণ করা যায়নি (স্টোরেজ পূর্ণ বা বন্ধ)।",
+      hifzLoadWarn: "সংরক্ষিত হিফজ ডেটা পড়া যায়নি, তাই রিসেট করা হয়েছে। ব্যাকআপ থাকলে সেটি আনুন।",
+      hifzImportOk: "ব্যাকআপ পুনরুদ্ধার হয়েছে।", hifzImportErr: "এটি একটি বৈধ হিফজ ব্যাকআপ ফাইল নয়।"
+    },
+    ar: {
+      catHifz: "الحفظ", descHifz: "تابع السبق والمراجعة والمنزل",
+      hifzTitle: "متابعة الحفظ", hifzProgress: "{n} من {t} صفحة محفوظة", hifzRemaining: "متبقي {n} صفحة",
+      hifzAddSabaq: "أضف سبق اليوم", hifzFrom: "من الصفحة", hifzTo: "إلى الصفحة", hifzSave: "حفظ",
+      hifzSabaqHint: "صفحات المصحف المدني (١٥ سطراً لكل صفحة). بحد أقصى ٢٠ صفحة لكل سبق.",
+      hifzSabaqList: "سجل السبق", hifzNoSabaq: "لا يوجد سبق بعد. أضف درس اليوم أعلاه.",
+      hifzPages: "الصفحات {a}–{b}", hifzStatusDone: "مكتمل", hifzStatusPlanned: "مخطط",
+      hifzMistakes: "الأخطاء", hifzDone: "تحديد كمكتمل", hifzUndo: "تراجع", hifzDelete: "حذف",
+      hifzDeleteConfirm: "حذف سجل هذا السبق؟",
+      hifzDueReviews: "المراجعة المستحقة اليوم", hifzNoDue: "لا توجد مراجعات مستحقة اليوم.",
+      hifzAfterDays: "مراجعة بعد {n} يوم", hifzReviewed: "تمت المراجعة",
+      hifzManzil: "المنزل (المراجعة الطويلة) اليوم", hifzManzilEmpty: "أكمل سبقاً أولاً؛ يبدأ المنزل من الصفحات المحفوظة.",
+      hifzMarkManzil: "تحديد المنزل كمكتمل", hifzManzilDone: "تم منزل اليوم. بارك الله فيك.",
+      hifzPace: "حاسبة الوتيرة", hifzPagesPerDay: "صفحات في اليوم",
+      hifzPaceResult: "بهذه الوتيرة يكتمل المصحف في نحو {n} يوم.", hifzPaceInvalid: "أدخل رقماً أكبر من صفر.",
+      hifzBackup: "النسخ الاحتياطي والاستعادة", hifzExport: "تصدير نسخة احتياطية", hifzImport: "استيراد نسخة احتياطية", hifzClear: "حذف كل البيانات",
+      hifzClearConfirm: "حذف كل سجلات الحفظ على هذا الجهاز؟ صدّر نسخة احتياطية أولاً.",
+      hifzBackupNote: "السجلات محفوظة على هذا الجهاز فقط. صدّر نسخة بانتظام.",
+      hifzDisclaimer: "هذه المتابعة تساعد توجيه المعلم ولا تحل محله.",
+      hifzErrRange: "أدخل أرقام صفحات صحيحة: ١–٦٠٤، ولا يكون «من» بعد «إلى».",
+      hifzErrTooLong: "الحد الأقصى للسبق ٢٠ صفحة.", hifzErrOverlap: "هذه الصفحات تتداخل مع سجل موجود.",
+      hifzSaveErr: "تعذّر الحفظ على هذا الجهاز (التخزين ممتلئ أو محظور).",
+      hifzLoadWarn: "تعذّرت قراءة بيانات الحفظ المحفوظة فأُعيد ضبطها. استعدها من نسخة احتياطية إن وُجدت.",
+      hifzImportOk: "تمت استعادة النسخة الاحتياطية.", hifzImportErr: "هذا الملف ليس نسخة احتياطية صالحة لملاحة القرآن."
+    }
+  };
+  ["en", "bn", "ar"].forEach(function (l) {
+    Object.keys(H[l]).forEach(function (k) { window.I18N[l][k] = H[l][k]; });
+  });
+})();
