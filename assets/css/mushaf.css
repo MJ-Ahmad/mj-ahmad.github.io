@@ -1,0 +1,140 @@
+/* UQNS — Mushaf viewer. Full-height reading layout for phones; page images are shown
+   on a paper-coloured stage like a printed Mushaf. Tokens come from styles.css. */
+
+html, body.m-body { height: 100%; }
+body.m-body {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--bg);
+  height: 100vh; height: 100dvh;
+}
+
+/* ---- Top bar ----------------------------------------------------------------- */
+.m-top {
+  flex: 0 0 auto; display: flex; align-items: center; gap: var(--s2);
+  min-height: 52px; padding: var(--s1) var(--s3);
+  padding-top: calc(var(--s1) + env(safe-area-inset-top, 0px));
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.m-home { flex: 0 0 auto; display: flex; }
+.m-info {
+  flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 2px var(--s2); font-size: 14px; line-height: 1.3;
+}
+.m-juz { color: var(--gold-text); font-weight: 600; white-space: nowrap; }
+.m-surah { color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.m-starts { color: var(--muted); font-size: 12px; width: 100%; }
+.m-tools { display: flex; align-items: center; gap: var(--s1); flex: 0 0 auto; }
+.m-icon {
+  min-height: 36px; min-width: 36px; padding: 0 var(--s2); display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--gold-text); background: transparent;
+}
+.m-tools .theme-toggle { width: 36px; height: 36px; }
+.m-tools .lang-toggle button { min-height: 36px; padding: var(--s1) var(--s2); font-size: 12px; }
+
+/* ---- Stage (page) --------------------------------------------------------------- */
+.m-stage {
+  position: relative; flex: 1 1 auto; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: #EFE5CB; touch-action: pan-y; overflow: hidden;
+  padding: var(--s2) 0;
+}
+[data-theme="dark"] .m-stage { background: #15130E; }
+.m-page { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+#pageImg {
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  object-fit: contain; user-select: none; -webkit-user-drag: none;
+  box-shadow: 0 2px 14px rgba(60, 40, 10, .22);
+  border-radius: 2px; cursor: pointer;
+}
+.m-missing { color: var(--muted); text-align: center; padding: var(--s4); }
+
+/* Page turn: "next" is on the left (Mushaf is read right to left), "prev" on the right */
+.m-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 44px; height: 64px; border: 0; border-radius: 10px;
+  background: rgba(0, 0, 0, .28); color: #fff; font-size: 30px; line-height: 1; cursor: pointer;
+  opacity: .75;
+}
+.m-arrow:hover, .m-arrow:focus-visible { opacity: 1; }
+.m-arrow-next { inset-inline-start: var(--s1); }
+.m-arrow-prev { inset-inline-end: var(--s1); }
+
+/* ---- Bottom bar -------------------------------------------------------------------- */
+.m-bottom {
+  flex: 0 0 auto; display: grid; gap: var(--s2);
+  padding: var(--s2) var(--s3) calc(var(--s2) + env(safe-area-inset-bottom, 0px));
+  background: var(--surface); border-top: 1px solid var(--line);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.m-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); }
+.m-counter { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.m-jump { display: flex; gap: var(--s1); align-items: center; }
+.m-jump input {
+  width: 84px; min-height: 40px; background: var(--bg); color: var(--text);
+  border: 1px solid var(--line); border-radius: 10px; padding: 0 var(--s2); font-size: 16px;
+}
+.m-slider { width: 100%; accent-color: var(--gold); }
+.m-actions { justify-content: stretch; }
+.m-actions .m-btn { flex: 1; }
+
+.m-btn {
+  min-height: 44px; min-width: 44px; padding: var(--s2) var(--s3); cursor: pointer;
+  border: 1px solid var(--gold); border-radius: 12px; background: transparent; color: var(--gold-text);
+  font-size: 15px; font-weight: 600;
+}
+.m-btn-primary { background: var(--gold); color: var(--on-gold); }
+.m-btn:disabled { opacity: .4; }
+.m-wide { width: 100%; margin-top: var(--s2); }
+
+/* Tap the page to hide both bars for a full-page view */
+[data-chrome].m-hidden { transform: translateY(100%); opacity: 0; pointer-events: none; position: absolute; }
+.m-top.m-hidden { transform: translateY(-100%); }
+.m-bottom.m-hidden { transform: translateY(100%); }
+
+/* ---- Juz panel and audio panel (bottom sheets) ---------------------------------- */
+.m-sheet {
+  position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
+  max-height: 78vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: var(--surface); border-top: 1px solid var(--gold); border-radius: 18px 18px 0 0;
+  padding: var(--s3) var(--s3) calc(var(--s4) + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, .35);
+}
+.m-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); margin-bottom: var(--s3); }
+.m-sheet-head h2 { font-size: 18px; color: var(--gold-text); }
+.m-juz-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
+.m-juz-item {
+  display: grid; gap: 2px; text-align: start; padding: var(--s2) var(--s3); min-height: 60px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); cursor: pointer;
+}
+.m-juz-item b { color: var(--gold-text); }
+.m-juz-item span { font-size: 13px; color: var(--muted); }
+.m-juz-item:hover, .m-juz-item:focus-visible { border-color: var(--gold); }
+.m-juz-surah { font-size: 12px; }
+
+.m-now { font-weight: 600; font-size: 17px; text-align: center; }
+.m-now-text { font-family: "QPC Hafs", "Noto Naskh Arabic", serif; text-align: center; font-size: 22px; line-height: 1.9; margin: var(--s2) 0; min-height: 2em; color: var(--text); direction: rtl; }
+.m-status { text-align: center; color: var(--muted); min-height: 1.4em; font-size: 14px; }
+.m-controls { display: flex; align-items: center; justify-content: center; gap: var(--s3); margin: var(--s2) 0; }
+.m-controls .m-btn { min-width: 56px; min-height: 56px; font-size: 22px; border-radius: 999px; }
+.m-play { min-width: 96px !important; font-size: 17px !important; }
+
+.m-settings { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2) var(--s3); margin-top: var(--s4); }
+.m-settings label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.m-settings label span { color: var(--gold-text); font-weight: 600; }
+.m-settings select {
+  min-height: 44px; width: 100%; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--text); padding: 0 var(--s2); font-size: 15px;
+}
+.m-settings select:disabled { opacity: .5; }
+
+/* ---- Wider screens: centre the sheets and widen the page area ----------------- */
+@media (min-width: 900px) {
+  .m-sheet { inset-inline: auto; left: 50%; transform: translateX(-50%); width: min(640px, 100% - 32px); border-radius: 18px; bottom: var(--s4); }
+  .m-juz-list { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 380px) {
+  .m-settings { grid-template-columns: 1fr; }
+  .m-juz-list { grid-template-columns: 1fr; }
+  .m-tools .theme-toggle .icon-sun, .m-tools .theme-toggle .icon-moon { width: 16px; height: 16px; }
+}

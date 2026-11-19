@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mushaf · UQNS</title>
+  <meta name="description" content="Madinah Mushaf, page by page and juz by juz, with recitation for memorisation.">
+  <meta name="theme-color" content="#0B0B0B">
+  <link rel="icon" href="assets/logo/logo-color.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('uqns.theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/mushaf.css">
+</head>
+<body class="m-body" data-title-key="mushaf.title" data-desc-key="mushaf.desc">
+
+  <header class="m-top" data-chrome>
+    <a class="m-home" href="index.html" aria-label="UQNS"><img src="assets/logo/logo-color.png" alt="" width="28" height="28"></a>
+    <div class="m-info" id="pageInfo" aria-live="polite"></div>
+    <div class="m-tools">
+      <a class="m-icon" id="pdfLink" href="#" target="_blank" rel="noopener" data-i18n-attr="aria-label:mushaf.pdf;title:mushaf.pdf">PDF</a>
+      <button type="button" class="theme-toggle" id="themeToggle" data-i18n-attr="aria-label:theme.label">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="lang-toggle" role="group" data-i18n-attr="aria-label:lang.label">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="bn">BN</button>
+        <button type="button" data-lang="ar">AR</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="m-stage" id="stage">
+    <button type="button" class="m-arrow m-arrow-next" id="nextBtn" data-i18n-attr="aria-label:mushaf.next" aria-label="Next page">&#8249;</button>
+    <div class="m-page">
+      <img id="pageImg" alt="" hidden>
+      <p class="m-missing" id="pageMissing" hidden data-i18n="mushaf.missing"></p>
+    </div>
+    <button type="button" class="m-arrow m-arrow-prev" id="prevBtn" data-i18n-attr="aria-label:mushaf.prev" aria-label="Previous page">&#8250;</button>
+  </main>
+
+  <footer class="m-bottom" data-chrome>
+    <div class="m-row">
+      <span class="m-counter" id="pageCounter"></span>
+      <form class="m-jump" id="jumpForm">
+        <input id="pageJump" type="number" min="1" max="604" inputmode="numeric" data-i18n-attr="aria-label:mushaf.jump;placeholder:mushaf.jump">
+        <button type="submit" class="m-btn" data-i18n="mushaf.go"></button>
+      </form>
+    </div>
+    <input class="m-slider" id="pageSlider" type="range" min="1" max="604" step="1" data-i18n-attr="aria-label:mushaf.jump">
+    <div class="m-row m-actions">
+      <button type="button" class="m-btn" id="juzBtn" data-i18n="mushaf.juzList"></button>
+      <button type="button" class="m-btn m-btn-primary" id="audioBtn" data-i18n="mushaf.audio"></button>
+    </div>
+  </footer>
+
+  <section class="m-sheet" id="juzPanel" hidden aria-labelledby="juzTitle">
+    <div class="m-sheet-head">
+      <h2 id="juzTitle" data-i18n="mushaf.juzList"></h2>
+      <button type="button" class="m-btn" id="juzClose" data-i18n="mushaf.close"></button>
+    </div>
+    <div class="m-juz-list" id="juzList"></div>
+  </section>
+
+  <section class="m-sheet m-audio" id="audioPanel" hidden aria-labelledby="audioTitle">
+    <div class="m-sheet-head">
+      <h2 id="audioTitle" data-i18n="mushaf.audio"></h2>
+      <button type="button" class="m-btn" id="audioClose" data-i18n="mushaf.close"></button>
+    </div>
+    <p class="m-now" id="audioLabel"></p>
+    <p class="m-now-text quran" id="audioText" lang="ar"></p>
+    <p class="m-status" id="audioStatus" role="status" aria-live="polite"></p>
+    <div class="m-controls">
+      <button type="button" class="m-btn" id="nextAyahBtn" data-i18n-attr="aria-label:mushaf.nextAyah" aria-label="Next ayah">&#8249;</button>
+      <button type="button" class="m-btn m-btn-primary m-play" id="playBtn" aria-pressed="false"></button>
+      <button type="button" class="m-btn" id="prevAyahBtn" data-i18n-attr="aria-label:mushaf.prevAyah" aria-label="Previous ayah">&#8250;</button>
+    </div>
+    <button type="button" class="m-btn m-wide" id="playPageBtn" data-i18n="mushaf.playPage"></button>
+    <div class="m-settings">
+      <label><span data-i18n="mushaf.qari"></span>
+        <select id="qariSel"></select></label>
+      <label><span data-i18n="mushaf.style"></span>
+        <select id="styleSel"></select></label>
+      <label><span data-i18n="mushaf.speed"></span>
+        <select id="speedSel">
+          <option value="0.75">0.75×</option><option value="1" selected>1×</option>
+          <option value="1.25">1.25×</option><option value="1.5">1.5×</option>
+        </select></label>
+      <label><span data-i18n="mushaf.repeatAyah"></span>
+        <select id="repAyahSel">
+          <option value="1">1×</option><option value="2">2×</option><option value="3">3×</option>
+          <option value="5">5×</option><option value="10">10×</option>
+        </select></label>
+      <label><span data-i18n="mushaf.repeatPage"></span>
+        <select id="repPageSel">
+          <option value="1">1×</option><option value="2">2×</option><option value="3">3×</option>
+          <option value="5">5×</option><option value="10">10×</option>
+        </select></label>
+    </div>
+  </section>
+
+  <script src="data/quran-data.js"></script>
+  <script src="data/reciters.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/data-loader.js"></script>
+  <script src="assets/js/mushaf.js"></script>
+</body>
+</html>

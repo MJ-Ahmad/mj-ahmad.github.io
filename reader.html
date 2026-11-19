@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Qur'an Reader · UQNS</title>
+  <meta name="description" content="Read the Qur'an by sura, juz, hizb or page.">
+  <link rel="icon" href="assets/logo/logo-color.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('uqns.theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/reader.css">
+</head>
+<body data-title-key="reader.title" data-desc-key="reader.desc">
+
+  <!-- Header: same markup and behaviour as the home page (theme + language toggles) -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="UQNS">
+        <img src="assets/logo/logo-color.png" alt="UQNS logo" width="40" height="40">
+        <span class="brand-name">UQNS</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="reader.html" data-i18n="nav.read" aria-current="page" class="is-current"></a>
+        <a href="mushaf.html" data-i18n="nav.mushaf"></a>
+        <a href="index.html#navigate" data-i18n="nav.navigate"></a>
+        <a href="index.html#discover" data-i18n="nav.discover"></a>
+        <a href="index.html#research" data-i18n="nav.research"></a>
+        <a href="index.html#tafseer" data-i18n="nav.tafseer"></a>
+        <a href="index.html#resources" data-i18n="nav.resources"></a>
+        <a href="index.html#community" data-i18n="nav.community"></a>
+        <a href="index.html#about" data-i18n="nav.about"></a>
+      </nav>
+      <button type="button" class="theme-toggle" id="themeToggle" data-i18n-attr="aria-label:theme.label">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="lang-toggle" role="group" data-i18n-attr="aria-label:lang.label">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="bn">BN</button>
+        <button type="button" data-lang="ar">AR</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="reader" id="top">
+
+    <!-- Navigation bar: mode tabs + prev / select / next -->
+    <div class="reader-bar">
+      <div class="container reader-bar-inner">
+        <div class="seg" id="modeTabs" role="group" data-i18n-attr="aria-label:reader.navBy">
+          <button type="button" data-mode="s" data-i18n="reader.mode.sura"></button>
+          <button type="button" data-mode="j" data-i18n="reader.mode.juz"></button>
+          <button type="button" data-mode="h" data-i18n="reader.mode.hizb"></button>
+          <button type="button" data-mode="p" data-i18n="reader.mode.page"></button>
+        </div>
+        <div class="pager">
+          <button type="button" class="pg-btn js-step" data-step="-1">
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            <span data-i18n="reader.prev"></span>
+          </button>
+          <select id="unitSelect" class="pg-select" data-i18n-attr="aria-label:reader.goto"></select>
+          <button type="button" class="pg-btn js-step" data-step="1">
+            <span data-i18n="reader.next"></span>
+            <svg class="chev chev-next" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text options -->
+    <div class="container reader-opts">
+      <label class="opt">
+        <span data-i18n="reader.text"></span>
+        <select id="scriptSelect"></select>
+      </label>
+      <label class="opt">
+        <span data-i18n="reader.tr.label"></span>
+        <select id="trSelect"></select>
+      </label>
+      <p class="reader-info" id="readerInfo" role="status" aria-live="polite"></p>
+    </div>
+
+    <!-- Reading area -->
+    <div class="container reader-wrap">
+      <div id="readerBody" aria-live="polite"></div>
+      <nav class="pager pager-bottom" aria-label="Pagination">
+        <button type="button" class="pg-btn js-step" data-step="-1">
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          <span data-i18n="reader.prev"></span>
+        </button>
+        <button type="button" class="pg-btn js-step" data-step="1">
+          <span data-i18n="reader.next"></span>
+          <svg class="chev chev-next" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </nav>
+      <p class="reader-credit" id="readerCredit"></p>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="about">
+    <div class="container footer-inner">
+      <img src="assets/logo/logo-color.png" alt="" width="36" height="36">
+      <div>
+        <p class="footer-name" data-i18n="footer.name"></p>
+        <p class="footer-motto" data-i18n="footer.motto"></p>
+        <p class="footer-rights" data-i18n="footer.rights"></p>
+        <p class="footer-credit"><span data-i18n="footer.credit"></span> <a href="https://mj-ahmad.github.io/qn" target="_blank" rel="noopener">mj-ahmad.github.io/qn</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Small files load up front. The large text/translation files are added on demand by reader.js
+       with <script> tags, so this page also works when opened straight from disk (file://). -->
+  <script src="data/quran-data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/reader.js"></script>
+</body>
+</html>
