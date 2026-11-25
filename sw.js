@@ -1,6 +1,6 @@
 /* UQNS service worker: makes the site installable and lets the shell open offline.
    Bump VERSION whenever a cached file changes, so visitors get the new files. */
-const VERSION = "uqns-v1";
+const VERSION = "uqns-v2";
 const SHELL = [
   "./",
   "index.html",
@@ -16,6 +16,7 @@ const SHELL = [
   "assets/js/data-loader.js",
   "assets/js/home-quotes.js",
   "assets/js/search.js",
+  "assets/js/bottom-nav.js",
   "assets/logo/logo-color.png",
   "assets/icons/icon-192.png",
   "assets/icons/icon-512.png",
