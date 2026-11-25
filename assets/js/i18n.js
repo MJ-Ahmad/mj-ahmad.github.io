@@ -176,7 +176,10 @@ window.UQNS_I18N = {
     "s12.cta1": "Read The Qur'an", "s12.cta2": "Search The Qur'an", "s12.cta3": "Explore Knowledge Graph",
     "footer.name": "Universal Qur'an Navigation System",
     "footer.motto": "From Revelation to Understanding. From Reading to Discovery. From Pages to Knowledge.",
-    "footer.rights": "A project of Quraner Fariwala"
+    "footer.rights": "A project of Quraner Fariwala",
+    "footer.install": "Install & share",
+    "install.pageTitle": "Install & share · UQNS",
+    "install.pageDesc": "Install UQNS as an Android app, or share it with family and friends by link, QR code or message."
   },
   bn: {
     "reader.title": "কুরআন রিডার · UQNS",
@@ -352,7 +355,10 @@ window.UQNS_I18N = {
     "s12.cta1": "কুরআন পড়ুন", "s12.cta2": "কুরআনে খুঁজুন", "s12.cta3": "জ্ঞান-গ্রাফ দেখুন",
     "footer.name": "সার্বজনীন কুরআন নেভিগেশন সিস্টেম",
     "footer.motto": "অবতরণ থেকে উপলব্ধি। পড়া থেকে আবিষ্কার। পৃষ্ঠা থেকে জ্ঞান।",
-    "footer.rights": "কুরানার ফরিওয়ালার একটি প্রকল্প"
+    "footer.rights": "কুরানার ফরিওয়ালার একটি প্রকল্প",
+    "footer.install": "ইনস্টল ও শেয়ার",
+    "install.pageTitle": "ইনস্টল ও শেয়ার · UQNS",
+    "install.pageDesc": "UQNS Android অ্যাপ হিসেবে ইনস্টল করুন, অথবা লিংক, QR কোড বা মেসেজে পরিবার ও বন্ধুদের সাথে শেয়ার করুন।"
   },
   ar: {
     "reader.title": "قارئ القرآن · UQNS",
@@ -528,6 +534,9 @@ window.UQNS_I18N = {
     "s12.cta1": "اقرأ القرآن", "s12.cta2": "ابحث في القرآن", "s12.cta3": "استكشف رسم المعرفة",
     "footer.name": "نظام القرآن الكريم الشامل للملاحة",
     "footer.motto": "من الوحي إلى الفهم. من القراءة إلى الاكتشاف. من الصفحات إلى المعرفة.",
-    "footer.rights": "مشروع من قرانر فاريوالا"
+    "footer.rights": "مشروع من قرانر فاريوالا",
+    "footer.install": "التثبيت والمشاركة",
+    "install.pageTitle": "التثبيت والمشاركة · UQNS",
+    "install.pageDesc": "ثبّت UQNS كتطبيق أندرويد، أو شاركه مع الأهل والأصدقاء برابط أو رمز QR أو رسالة."
   }
 };

@@ -83,6 +83,10 @@
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
+  <script>
+    /* The old #get-app section now lives on its own page. */
+    if (location.hash === '#get-app') location.replace('install.html');
+  </script>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -392,33 +396,6 @@
       </div>
     </section>
 
-    <!-- 13. Get the app and share -->
-    <section class="s s-share" id="get-app" aria-labelledby="getAppTitle">
-      <div class="container narrow center">
-        <img class="share-logo" src="assets/icons/icon-192.png" alt="" width="72" height="72">
-        <h2 class="headline" id="getAppTitle" data-sh="install.title"></h2>
-        <p class="lead" data-sh="install.lead"></p>
-        <div class="actions">
-          <button type="button" class="btn btn-primary" id="installBtn" data-sh="install.button" hidden></button>
-        </div>
-        <p class="note" id="installHint" hidden></p>
-        <p class="note" id="installDone" data-sh="install.done" hidden></p>
-
-        <h3 class="share-title" data-sh="share.title"></h3>
-        <p class="lead" data-sh="share.lead"></p>
-        <div class="share-row" role="group" aria-label="UQNS">
-          <button type="button" class="share-btn" id="shareNative" data-sh="share.native" hidden></button>
-          <button type="button" class="share-btn" id="shareCopy" data-sh="share.copy"></button>
-          <a class="share-btn" data-share-link="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="share-btn" data-share-link="telegram" target="_blank" rel="noopener">Telegram</a>
-          <a class="share-btn" data-share-link="facebook" target="_blank" rel="noopener">Facebook</a>
-          <a class="share-btn" data-share-link="x" target="_blank" rel="noopener">X</a>
-          <a class="share-btn" data-share-link="email">Email</a>
-        </div>
-        <p class="share-status" id="shareStatus" role="status" aria-live="polite"></p>
-      </div>
-    </section>
-
   </main>
 
   <footer class="site-footer" id="about">
@@ -428,6 +405,7 @@
         <p class="footer-name" data-i18n="footer.name"></p>
         <p class="footer-motto" data-i18n="footer.motto"></p>
         <p class="footer-rights" data-i18n="footer.rights"></p>
+        <p class="footer-credit"><a class="footer-install" href="install.html" data-i18n="footer.install"></a></p>
         <p class="footer-credit"><span data-i18n="footer.credit"></span> <a href="https://mj-ahmad.github.io/qn" target="_blank" rel="noopener">mj-ahmad.github.io/qn</a></p>
       </div>
     </div>

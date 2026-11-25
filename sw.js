@@ -1,15 +1,17 @@
 /* UQNS service worker: makes the site installable and lets the shell open offline.
    Bump VERSION whenever a cached file changes, so visitors get the new files. */
-const VERSION = "uqns-v2";
+const VERSION = "uqns-v3";
 const SHELL = [
   "./",
   "index.html",
   "mushaf.html",
   "reader.html",
+  "install.html",
   "manifest.webmanifest",
   "assets/css/styles.css",
   "assets/css/reader.css",
   "assets/css/mushaf.css",
+  "assets/css/install.css",
   "assets/js/i18n.js",
   "assets/js/app.js",
   "assets/js/share-install.js",
@@ -18,6 +20,7 @@ const SHELL = [
   "assets/js/search.js",
   "assets/js/bottom-nav.js",
   "assets/logo/logo-color.png",
+  "assets/share/qr.svg",
   "assets/icons/icon-192.png",
   "assets/icons/icon-512.png",
   "assets/icons/maskable-512.png",

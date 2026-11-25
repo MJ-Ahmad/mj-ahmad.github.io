@@ -17,7 +17,7 @@
       full: { home: "الرئيسية", read: "اقرأ القرآن", search: "ابحث في القرآن", graph: "استكشف الرسم المعرفي", menu: "القائمة" },
       menu: ["اقرأ القرآن", "صفحات المصحف", "التصفح", "اكتشف", "البحث والرسم المعرفي", "التفسير", "المصادر", "المجتمع", "التثبيت والمشاركة", "عن المشروع"] }
   };
-  var LINKS = ["quran-reader/", "mushaf.html", "#navigate", "#discover", "#research", "#tafseer", "#resources", "#community", "#get-app", "#about"];
+  var LINKS = ["quran-reader/", "mushaf.html", "#navigate", "#discover", "#research", "#tafseer", "#resources", "#community", "install.html", "#about"];
   var IC = {
     home: '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/>',
     read: '<path d="M12 6.5C10.5 5 8 4.5 4 4.5v13c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-13c-4 0-6.5.5-8 2z"/><path d="M12 6.5v13"/>',

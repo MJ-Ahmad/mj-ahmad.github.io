@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>UQNS · Universal Qur'an Navigation System</title>
+  <meta name="description" content="UQNS: a digital entrance into the Qur'an. Read the Mushaf, navigate by surah, juz and page, search the Arabic text, and study translations and tafsir in English, Bangla and Arabic.">
+  <meta name="keywords" content="Qur'an, Quran reader, Mushaf, Tafsir, Bangla Quran, search Quran, UQNS">
+  <meta name="author" content="MJ Ahmad">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://mj-ahmad.github.io/">
+  <link rel="alternate" hreflang="x-default" href="https://mj-ahmad.github.io/">
+
+  <!-- Icons, install and Apple -->
+  <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="UQNS">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Share previews: WhatsApp, Telegram, Facebook, X, LinkedIn, iMessage -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UQNS">
+  <meta property="og:title" content="UQNS · Universal Qur'an Navigation System">
+  <meta property="og:description" content="A digital entrance into the Qur'an: read, navigate, search and study.">
+  <meta property="og:url" content="https://mj-ahmad.github.io/">
+  <meta property="og:image" content="https://mj-ahmad.github.io/assets/share/og-image.png">
+  <meta property="og:image:secure_url" content="https://mj-ahmad.github.io/assets/share/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="UQNS logo with the tagline: A Digital Entrance into the Qur'an">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="bn_BD">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UQNS · Universal Qur'an Navigation System">
+  <meta name="twitter:description" content="A digital entrance into the Qur'an.">
+  <meta name="twitter:image" content="https://mj-ahmad.github.io/assets/share/og-image.png">
+  <meta name="twitter:image:alt" content="UQNS logo with the tagline: A Digital Entrance into the Qur'an">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://mj-ahmad.github.io/#website",
+        "url": "https://mj-ahmad.github.io/",
+        "name": "UQNS",
+        "alternateName": "Universal Qur'an Navigation System",
+        "description": "A digital entrance into the Qur'an: read, navigate, search and study in Arabic, English and Bangla.",
+        "inLanguage": ["en", "bn", "ar"]
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://mj-ahmad.github.io/#app",
+        "name": "UQNS",
+        "url": "https://mj-ahmad.github.io/",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationApplication",
+        "image": "https://mj-ahmad.github.io/assets/icons/icon-512.png",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('uqns.theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- Splash -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <img class="splash-logo" src="assets/logo/logo-color.png" alt="">
+    <h1 class="splash-name" data-i18n="splash.name"></h1>
+    <p class="splash-tagline" data-i18n="splash.tagline"></p>
+    <p class="splash-ayah" data-i18n="splash.ayah"></p>
+    <button class="splash-skip" id="splashSkip" type="button" data-i18n="splash.skip"></button>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="UQNS">
+        <img src="assets/logo/logo-color.png" alt="UQNS logo" width="40" height="40">
+        <span class="brand-name">UQNS</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="quran-reader/" data-i18n="nav.read"></a>
+        <a href="mushaf.html" data-i18n="nav.mushaf"></a>
+        <a href="#navigate" data-i18n="nav.navigate"></a>
+        <a href="#discover" data-i18n="nav.discover"></a>
+        <a href="#research" data-i18n="nav.research"></a>
+        <a href="#tafseer" data-i18n="nav.tafseer"></a>
+        <a href="#resources" data-i18n="nav.resources"></a>
+        <a href="#community" data-i18n="nav.community"></a>
+        <a href="#about" data-i18n="nav.about"></a>
+      </nav>
+      <form class="header-search" id="headerSearch" role="search">
+        <input type="search" data-i18n-attr="placeholder:search.placeholder" aria-label="Search">
+      </form>
+      <button type="button" class="theme-toggle" id="themeToggle" data-i18n-attr="aria-label:theme.label">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="lang-toggle" role="group" data-i18n-attr="aria-label:lang.label">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="bn">BN</button>
+        <button type="button" data-lang="ar">AR</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- 1. A Message To Humanity -->
+    <section class="s s-message" id="read">
+      <div class="container center">
+        <p class="eyebrow" data-i18n="s1.eyebrow"></p>
+        <h2 class="display" data-i18n="s1.headline"></h2>
+        <p class="arabic-display" lang="ar" data-i18n="s1.arabic"></p>
+        <p class="call" data-i18n="s1.call"></p>
+        <p class="lead" data-i18n="s1.text"></p>
+        <div class="quote-pair">
+          <figure class="quote">
+            <figcaption data-i18n="s1.ayahLabel"></figcaption>
+            <blockquote data-i18n="s1.ayah" data-ref="2:185" data-kind="verse"></blockquote>
+          </figure>
+          <figure class="quote">
+            <figcaption data-i18n="s1.hadithLabel"></figcaption>
+            <blockquote data-i18n="s1.hadith"></blockquote>
+          </figure>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="quran-reader/" data-i18n="s1.cta1"></a>
+          <a class="btn" href="#discover" data-i18n="s1.cta2"></a>
+          <a class="btn" href="#research" data-i18n="s1.cta3"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Why the Qur'an matters -->
+    <section class="s" id="navigate">
+      <div class="container">
+        <p class="eyebrow" data-i18n="s2.eyebrow"></p>
+        <h2 class="headline" data-i18n="s2.headline"></h2>
+        <div class="split">
+          <figure class="quote">
+            <figcaption data-i18n="s2.ayahLabel"></figcaption>
+            <blockquote class="arabic" lang="ar" data-i18n="s2.ayah" data-ref="96:1" data-kind="ar"></blockquote>
+            <p class="translation" data-i18n="s2.ayahTr" data-ref="96:1" data-kind="tr"></p>
+          </figure>
+          <figure class="quote">
+            <figcaption data-i18n="s2.hadithLabel"></figcaption>
+            <blockquote data-i18n="s2.hadith"></blockquote>
+          </figure>
+        </div>
+        <div class="cards cards-3">
+          <article class="card"><h3 data-i18n="s2.c1t"></h3><p data-i18n="s2.c1d"></p></article>
+          <article class="card"><h3 data-i18n="s2.c2t"></h3><p data-i18n="s2.c2d"></p></article>
+          <article class="card"><h3 data-i18n="s2.c3t"></h3><p data-i18n="s2.c3d"></p></article>
+          <article class="card"><h3 data-i18n="s2.c4t"></h3><p data-i18n="s2.c4d"></p></article>
+          <article class="card"><h3 data-i18n="s2.c5t"></h3><p data-i18n="s2.c5d"></p></article>
+          <article class="card"><h3 data-i18n="s2.c6t"></h3><p data-i18n="s2.c6d"></p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Living knowledge network -->
+    <section class="s s-network">
+      <div class="container split split-wide">
+        <div>
+          <p class="eyebrow" data-i18n="s3.eyebrow"></p>
+          <h2 class="headline" data-i18n="s3.headline"></h2>
+          <p class="lead" data-i18n="s3.text"></p>
+          <ul class="features">
+            <li data-i18n="s3.f1"></li><li data-i18n="s3.f2"></li><li data-i18n="s3.f3"></li>
+            <li data-i18n="s3.f4"></li><li data-i18n="s3.f5"></li>
+          </ul>
+        </div>
+        <svg class="graph" viewBox="0 0 400 300" role="img" aria-label="Knowledge graph">
+          <g class="edges">
+            <line x1="200" y1="150" x2="90" y2="70"/><line x1="200" y1="150" x2="320" y2="60"/>
+            <line x1="200" y1="150" x2="330" y2="200"/><line x1="200" y1="150" x2="110" y2="230"/>
+            <line x1="90" y1="70" x2="40" y2="160"/><line x1="320" y1="60" x2="365" y2="130"/>
+            <line x1="330" y1="200" x2="250" y2="270"/><line x1="110" y1="230" x2="60" y2="270"/>
+          </g>
+          <g class="nodes">
+            <circle cx="200" cy="150" r="14"/><circle cx="90" cy="70" r="8"/><circle cx="320" cy="60" r="8"/>
+            <circle cx="330" cy="200" r="8"/><circle cx="110" cy="230" r="8"/><circle cx="40" cy="160" r="6"/>
+            <circle cx="365" cy="130" r="6"/><circle cx="250" cy="270" r="6"/><circle cx="60" cy="270" r="6"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 4. Invitation to learn -->
+    <section class="s" id="discover">
+      <div class="container narrow center">
+        <p class="eyebrow" data-i18n="s4.eyebrow"></p>
+        <h2 class="headline" data-i18n="s4.headline"></h2>
+        <figure class="quote">
+          <figcaption data-i18n="s4.ayahLabel"></figcaption>
+          <blockquote class="arabic" lang="ar" data-i18n="s4.ayah" data-ref="39:9" data-kind="ar"></blockquote>
+          <p class="translation" data-i18n="s4.ayahTr" data-ref="39:9" data-kind="tr"></p>
+        </figure>
+        <figure class="quote">
+          <figcaption data-i18n="s4.hadithLabel"></figcaption>
+          <blockquote data-i18n="s4.hadith"></blockquote>
+        </figure>
+        <div class="actions">
+          <a class="btn btn-primary" href="#research" data-i18n="s4.cta1"></a>
+          <a class="btn" href="#discover" data-i18n="s4.cta2"></a>
+          <a class="btn" href="#tafseer" data-i18n="s4.cta3"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Discover evidence -->
+    <section class="s">
+      <div class="container">
+        <p class="eyebrow" data-i18n="s5.eyebrow"></p>
+        <h2 class="headline" data-i18n="s5.headline"></h2>
+        <p class="lead" data-i18n="s5.sub"></p>
+        <div class="split">
+          <figure class="quote">
+            <figcaption data-i18n="s5.ayahLabel"></figcaption>
+            <blockquote class="arabic" lang="ar" data-i18n="s5.ayah" data-ref="10:101" data-kind="ar"></blockquote>
+            <p class="translation" data-i18n="s5.ayahTr" data-ref="10:101" data-kind="tr"></p>
+          </figure>
+          <figure class="quote">
+            <figcaption data-i18n="s5.hadithLabel"></figcaption>
+            <blockquote data-i18n="s5.hadith"></blockquote>
+          </figure>
+        </div>
+        <div class="chips">
+          <span data-i18n="s5.c1"></span><span data-i18n="s5.c2"></span><span data-i18n="s5.c3"></span>
+          <span data-i18n="s5.c4"></span><span data-i18n="s5.c5"></span><span data-i18n="s5.c6"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5b. Research / knowledge graph (target of #research links) -->
+    <section class="s" id="research">
+      <div class="container">
+        <p class="eyebrow" data-i18n="s13.eyebrow"></p>
+        <h2 class="headline" data-i18n="s13.headline"></h2>
+        <p class="lead" data-i18n="s13.text"></p>
+        <div class="cards cards-3">
+          <article class="card"><h3 data-i18n="s13.c1t"></h3><p data-i18n="s13.c1d"></p></article>
+          <article class="card"><h3 data-i18n="s13.c2t"></h3><p data-i18n="s13.c2d"></p></article>
+          <article class="card"><h3 data-i18n="s13.c3t"></h3><p data-i18n="s13.c3d"></p></article>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="quran-reader/" data-i18n="s12.cta1"></a>
+          <a class="btn" href="#search" data-i18n="s12.cta2"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Thoughtful skeptic -->
+    <section class="s">
+      <div class="container narrow center">
+        <p class="eyebrow" data-i18n="s6.eyebrow"></p>
+        <h2 class="headline" data-i18n="s6.headline"></h2>
+        <figure class="quote">
+          <figcaption data-i18n="s6.ayahLabel"></figcaption>
+          <blockquote class="arabic" lang="ar" data-i18n="s6.ayah" data-ref="4:82" data-kind="ar"></blockquote>
+          <p class="translation" data-i18n="s6.ayahTr" data-ref="4:82" data-kind="tr"></p>
+        </figure>
+        <p class="lead" data-i18n="s6.text"></p>
+        <div class="actions">
+          <a class="btn btn-primary" href="quran-reader/" data-i18n="s6.cta1"></a>
+          <a class="btn" href="#discover" data-i18n="s6.cta2"></a>
+          <a class="btn" href="#navigate" data-i18n="s6.cta3"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Open-minded non-believer -->
+    <section class="s">
+      <div class="container narrow center">
+        <p class="eyebrow" data-i18n="s7.eyebrow"></p>
+        <h2 class="headline" data-i18n="s7.headline"></h2>
+        <figure class="quote">
+          <figcaption data-i18n="s7.ayahLabel"></figcaption>
+          <blockquote class="arabic" lang="ar" data-i18n="s7.ayah" data-ref="16:125" data-kind="ar"></blockquote>
+          <p class="translation" data-i18n="s7.ayahTr" data-ref="16:125" data-kind="tr"></p>
+        </figure>
+        <figure class="quote">
+          <figcaption data-i18n="s7.hadithLabel"></figcaption>
+          <blockquote data-i18n="s7.hadith"></blockquote>
+        </figure>
+        <p class="lead" data-i18n="s7.text"></p>
+      </div>
+    </section>
+
+    <!-- 8. Challenge -->
+    <section class="s">
+      <div class="container narrow center">
+        <p class="eyebrow" data-i18n="s8.eyebrow"></p>
+        <h2 class="headline" data-i18n="s8.headline"></h2>
+        <figure class="quote">
+          <figcaption data-i18n="s8.ayahLabel"></figcaption>
+          <blockquote class="arabic" lang="ar" data-i18n="s8.ayah" data-ref="2:23" data-kind="ar"></blockquote>
+          <p class="translation" data-i18n="s8.ayahTr" data-ref="2:23" data-kind="tr"></p>
+        </figure>
+        <p class="lead" data-i18n="s8.text"></p>
+        <p class="verbs" data-i18n="s8.verbs"></p>
+        <div class="actions">
+          <a class="btn btn-primary" href="quran-reader/" data-i18n="s8.cta1"></a>
+          <a class="btn" href="#search" data-i18n="s8.cta2"></a>
+          <a class="btn" href="#research" data-i18n="s8.cta3"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Platform showcase -->
+    <section class="s" id="tafseer">
+      <div class="container">
+        <p class="eyebrow" data-i18n="s9.eyebrow"></p>
+        <div class="cards cards-3">
+          <article class="card"><h3 data-i18n="s9.p1t"></h3><p data-i18n="s9.p1d"></p></article>
+          <article class="card"><h3 data-i18n="s9.p2t"></h3><p data-i18n="s9.p2d"></p></article>
+          <article class="card"><h3 data-i18n="s9.p3t"></h3><p data-i18n="s9.p3d"></p></article>
+          <article class="card"><h3 data-i18n="s9.p4t"></h3><p data-i18n="s9.p4d"></p></article>
+          <article class="card"><h3 data-i18n="s9.p5t"></h3><p data-i18n="s9.p5d"></p></article>
+          <article class="card"><h3 data-i18n="s9.p6t"></h3><p data-i18n="s9.p6d"></p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Universal search -->
+    <section class="s s-search" id="search">
+      <div class="container narrow center">
+        <p class="eyebrow" data-i18n="s10.eyebrow"></p>
+        <form class="big-search" id="bigSearch" role="search">
+          <input type="search" data-i18n-attr="placeholder:s10.placeholder" aria-label="Search the Qur'an">
+          <button type="submit" class="btn btn-primary" data-i18n="search.button"></button>
+        </form>
+        <div class="chips" id="searchChips" data-i18n-list="s10.chips"></div>
+        <p class="note search-status" id="searchStatus" role="status" aria-live="polite"></p>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </section>
+
+    <!-- 11. Statistics -->
+    <section class="s s-stats" id="resources">
+      <div class="container">
+        <p class="eyebrow center" data-i18n="s11.eyebrow"></p>
+        <div class="stats">
+          <div><strong>114</strong><span data-i18n="s11.surahs"></span></div>
+          <div><strong>6236</strong><span data-i18n="s11.ayat"></span></div>
+          <div><strong>30</strong><span data-i18n="s11.juz"></span></div>
+          <div><strong>60</strong><span data-i18n="s11.hizb"></span></div>
+          <div><strong>604</strong><span data-i18n="s11.pages"></span></div>
+        </div>
+        <p class="note" data-i18n="s11.topics"></p>
+        <p class="note" data-i18n="s11.note"></p>
+      </div>
+    </section>
+
+    <!-- 12. Final call to action -->
+    <section class="s s-final" id="community" aria-label="Begin">
+      <div class="container center">
+        <img class="final-mark" src="assets/logo/logo-color.png" alt="" width="72" height="72">
+        <h2 class="display" data-i18n="s12.headline"></h2>
+        <p class="verbs" data-i18n="s12.verbs"></p>
+        <div class="actions">
+          <a class="btn btn-primary" href="quran-reader/" data-i18n="s12.cta1"></a>
+          <a class="btn" href="#search" data-i18n="s12.cta2"></a>
+          <a class="btn" href="#research" data-i18n="s12.cta3"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. Get the app and share -->
+    <section class="s s-share" id="get-app" aria-labelledby="getAppTitle">
+      <div class="container narrow center">
+        <img class="share-logo" src="assets/icons/icon-192.png" alt="" width="72" height="72">
+        <h2 class="headline" id="getAppTitle" data-sh="install.title"></h2>
+        <p class="lead" data-sh="install.lead"></p>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="installBtn" data-sh="install.button" hidden></button>
+        </div>
+        <p class="note" id="installHint" hidden></p>
+        <p class="note" id="installDone" data-sh="install.done" hidden></p>
+
+        <h3 class="share-title" data-sh="share.title"></h3>
+        <p class="lead" data-sh="share.lead"></p>
+        <div class="share-row" role="group" aria-label="UQNS">
+          <button type="button" class="share-btn" id="shareNative" data-sh="share.native" hidden></button>
+          <button type="button" class="share-btn" id="shareCopy" data-sh="share.copy"></button>
+          <a class="share-btn" data-share-link="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="share-btn" data-share-link="telegram" target="_blank" rel="noopener">Telegram</a>
+          <a class="share-btn" data-share-link="facebook" target="_blank" rel="noopener">Facebook</a>
+          <a class="share-btn" data-share-link="x" target="_blank" rel="noopener">X</a>
+          <a class="share-btn" data-share-link="email">Email</a>
+        </div>
+        <p class="share-status" id="shareStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="about">
+    <div class="container footer-inner">
+      <img src="assets/logo/logo-color.png" alt="" width="36" height="36">
+      <div>
+        <p class="footer-name" data-i18n="footer.name"></p>
+        <p class="footer-motto" data-i18n="footer.motto"></p>
+        <p class="footer-rights" data-i18n="footer.rights"></p>
+        <p class="footer-credit"><span data-i18n="footer.credit"></span> <a href="https://mj-ahmad.github.io/qn" target="_blank" rel="noopener">mj-ahmad.github.io/qn</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/data-loader.js"></script>
+  <script src="assets/js/home-quotes.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/share-install.js"></script>
+<script src="assets/js/bottom-nav.js" defer></script>
+</body>
+</html>
