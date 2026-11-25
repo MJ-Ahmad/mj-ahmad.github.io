@@ -177,6 +177,8 @@ window.UQNS_I18N = {
     "footer.name": "Universal Qur'an Navigation System",
     "footer.motto": "From Revelation to Understanding. From Reading to Discovery. From Pages to Knowledge.",
     "footer.rights": "A project of Quraner Fariwala",
+    "f.mj": "MJ Ahmad",
+    "f.rights": "All rights reserved",
     "footer.install": "Install & share",
     "install.pageTitle": "Install & share · UQNS",
     "install.pageDesc": "Install UQNS as an Android app, or share it with family and friends by link, QR code or message."
@@ -357,6 +359,8 @@ window.UQNS_I18N = {
     "footer.motto": "অবতরণ থেকে উপলব্ধি। পড়া থেকে আবিষ্কার। পৃষ্ঠা থেকে জ্ঞান।",
     "footer.rights": "কুরানার ফরিওয়ালার একটি প্রকল্প",
     "footer.install": "ইনস্টল ও শেয়ার",
+    "f.mj": "এম জে আহমদ",
+    "f.rights": "সর্বস্বত্ব সংরক্ষিত",
     "install.pageTitle": "ইনস্টল ও শেয়ার · UQNS",
     "install.pageDesc": "UQNS Android অ্যাপ হিসেবে ইনস্টল করুন, অথবা লিংক, QR কোড বা মেসেজে পরিবার ও বন্ধুদের সাথে শেয়ার করুন।"
   },
@@ -535,6 +539,8 @@ window.UQNS_I18N = {
     "footer.name": "نظام القرآن الكريم الشامل للملاحة",
     "footer.motto": "من الوحي إلى الفهم. من القراءة إلى الاكتشاف. من الصفحات إلى المعرفة.",
     "footer.rights": "مشروع من قرانر فاريوالا",
+    "f.mj": "محمد جعفر أحمد",
+    "f.rights": "جميع الحقوق محفوظة",
     "footer.install": "التثبيت والمشاركة",
     "install.pageTitle": "التثبيت والمشاركة · UQNS",
     "install.pageDesc": "ثبّت UQNS كتطبيق أندرويد، أو شاركه مع الأهل والأصدقاء برابط أو رمز QR أو رسالة."

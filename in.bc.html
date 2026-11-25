@@ -109,7 +109,7 @@
       </a>
       <nav class="primary-nav" aria-label="Primary">
         <a href="quran-reader/" data-i18n="nav.read"></a>
-        <a href="mushaf.html" data-i18n="nav.mushaf"></a>
+        <a href="mushaf/" data-i18n="nav.mushaf"></a>
         <a href="#navigate" data-i18n="nav.navigate"></a>
         <a href="#discover" data-i18n="nav.discover"></a>
         <a href="#research" data-i18n="nav.research"></a>
@@ -398,16 +398,17 @@
 
   </main>
 
-  <footer class="site-footer" id="about">
-    <div class="container footer-inner">
-      <img src="assets/logo/logo-color.png" alt="" width="36" height="36">
-      <div>
-        <p class="footer-name" data-i18n="footer.name"></p>
-        <p class="footer-motto" data-i18n="footer.motto"></p>
-        <p class="footer-rights" data-i18n="footer.rights"></p>
-        <p class="footer-credit"><a class="footer-install" href="install.html" data-i18n="footer.install"></a></p>
-        <p class="footer-credit"><span data-i18n="footer.credit"></span> <a href="https://mj-ahmad.github.io/qn" target="_blank" rel="noopener">mj-ahmad.github.io/qn</a></p>
+  <footer class="site-footer" id="about" data-footer>
+    <div class="container">
+      <div class="footer-top">
+        <a class="footer-brand" href="./"><img src="assets/logo/logo-color.png" alt="" width="40" height="40"><span><strong data-i18n="footer.name">Universal Qur'an Navigation System</strong><small data-i18n="footer.motto">From Revelation to Understanding. From Reading to Discovery. From Pages to Knowledge.</small></span></a>
+        <a class="footer-project" href="qf/"><img src="assets/logo/qf-logo.png" alt="" width="32" height="32"><span data-i18n="f.projectOf">A project of Quraner Fariwala</span></a>
       </div>
+      <nav class="footer-grid" aria-label="Footer"><div class="footer-col"><h3 data-i18n="f.h.quran">Qur'an</h3><ul><li><a href="quran-reader/" data-i18n="f.read">Read Quran</a></li><li><a href="mushaf/" data-i18n="f.mushaf">Mushaf pages</a></li><li><a href="listen/" data-i18n="f.listen">Listen Quran</a></li><li><a href="./#search" data-i18n="f.search">Search Quran</a></li><li><a href="memories/" data-i18n="f.memories">Memories Quran</a></li><li><a href="tajbid/" data-i18n="f.tajbid">Tajbidul Quran</a></li><li><a href="mukaddamah/" data-i18n="f.mukaddamah">Al-Mukaddamah (Ibn al-Jazari)</a></li></ul></div><div class="footer-col"><h3 data-i18n="f.h.study">Study</h3><ul><li><a href="reciters/" data-i18n="f.reciters">Reciters</a></li><li><a href="translate/" data-i18n="f.translate">Translations</a></li><li><a href="tafasir/" data-i18n="f.tafasir">Tafasir</a></li></ul></div>
+      </nav>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 <a href="mj-ahmad/" data-i18n="f.mj">MJ Ahmad</a> - <span data-i18n="f.rights">All rights reserved</span></p>
+        </div>
     </div>
   </footer>
 
