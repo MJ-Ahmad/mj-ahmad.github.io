@@ -1,6 +1,6 @@
 /* UQNS service worker: makes the site installable and lets the shell open offline.
    Bump VERSION whenever a cached file changes, so visitors get the new files. */
-const VERSION = "uqns-v4";
+const VERSION = "uqns-v5";
 const SHELL = [
   "./",
   "index.html",
