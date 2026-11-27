@@ -1,135 +1,614 @@
-# UQNS + কুরআন রিডার — প্রোডাকশন সেটআপ
+# Universal Quran Navigation System (UQNS)
 
-**লাইভ ঠিকানা:** https://mj-ahmad.github.io/
-**রিডার:** https://mj-ahmad.github.io/quran-reader/
-**মুসহাফ ভিউয়ার:** https://mj-ahmad.github.io/mushaf.html
+> এটি শুধু একটি Quran Reader Project নয়, বরং একটি Universal Quran Navigation Ecosystem (UQNE)-এর ভিত্তি।
 
-এই প্রজেক্টে দুটি অংশ আছে:
+---
 
-| অংশ | কোথায় | কী |
-|---|---|---|
-| UQNS হোম পেজ | রুট (`index.html`) | স্প্ল্যাশ, হোম পেজ, শেয়ার, অ্যাপ ইনস্টল |
-| কুরআন রিডার | `/quran-reader/` (সোর্স: `quran-reader-src/`) | সূরা, পারা, হিযব, পৃষ্ঠা, অনুবাদ, তিলাওয়াত, সার্চ |
+## Navigation 
 
-হোম পেজের সব "কুরআন পড়ুন / Read / পড়ুন" বোতাম এখন রিডারে যায়।
+- Table of Contents
+  - Layers
+    - [01 — Foundation Layer](#layer-01--foundation-layer)
+    - [02 — Quran Content Universe](#layer-02--quran-content-universe)
+    - [03 — Navigation Universe](#layer-03--navigation-universe)
+    - [04 — Quran Page Universe](#layer-04--quran-page-universe)
+    - [05 — Quran Structure Database](#layer-05--quran-structure-database)
+    - [06 — Localization System](#layer-06--localization-system)
+    - [07 — Search Universe](#layer-07--search-universe)
+    - [08 — Reader Universe](#layer-08--reader-universe)
+    - [09 — Audio Universe](#layer-09--audio-universe)
+    - [10 — Study Universe](#layer-10--study-universe)
+    - [11 — User Profile Universe](#layer-11--user-profile-universe)
+    - [12 — Analytics Universe](#layer-12--analytics-universe)
+    - [13 — API Universe](#layer-13--api-universe)
+    - [14 — Apps Universe](#layer-14--apps-universe)
+    - [15 — Documentation Universe](#layer-15--documentation-universe)
+    - [16 — Governance Universe](#layer-16--governance-universe)
+  - [Language Expansion Roadmap](#language-expansion-roadmap)
+  - [Long-Term Vision](#long-term-vision)
+  - [Branding Layer](#branding-layer)
+  - [Task](#task)
 
-## ফোল্ডার কাঠামো
+---
 
+## Vision
+
+```text
+One Quran
+Many Languages
+Many Learning Styles
+Many Devices
+One Navigation System
 ```
-/                          (GitHub Pages-এর রুট)
-├── index.html             হোম পেজ: স্প্ল্যাশ, সেকশন, শেয়ার ও ইনস্টল সেকশন
-├── mushaf.html            মুসহাফ ভিউয়ার (পৃষ্ঠা ও পারা)
-├── reader.html            সার্চ ফলাফলের আয়াতে যাওয়ার পুরনো রিডার (সার্চ লিংকের জন্য রাখা)
-├── manifest.webmanifest   অ্যাপ ম্যানিফেস্ট (নাম, আইকন, রং, শর্টকাট)
-├── sw.js                  সার্ভিস ওয়ার্কার: অ্যাপ ইনস্টল ও অফলাইন হোম শেল
-├── sitemap.xml, robots.txt  সার্চ ইঞ্জিনের জন্য
-├── .nojekyll              GitHub Pages-কে Jekyll প্রসেস করতে বারণ
-├── .well-known/assetlinks.json   Android অ্যাপ যাচাই (TWA, নিচে দেখুন)
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Ultimate Tree
+
+```text
+quran-navigation/
+
 ├── assets/
-│   ├── css/, js/, logo/, fonts/   UI, স্ক্রিপ্ট ও ব্র্যান্ড ফাইল
-│   ├── js/share-install.js        শেয়ার বোতাম, ইনস্টল বোতাম, সার্ভিস ওয়ার্কার নিবন্ধন
-│   ├── icons/                     favicon, 192/512 আইকন, maskable, Apple touch আইকন
-│   ├── share/og-image.png         শেয়ার কার্ড (1200×630)
-│   └── mushaf/pages/*.webp        মুসহাফের ৬০৪টি পৃষ্ঠার ছবি
-├── data/                  UQNS-এর মেটাডেটা ও কুরআন পাঠ/অনুবাদ
-├── android/twa-manifest.json      Bubblewrap-এর কনফিগ (Play Store-এর জন্য)
-├── quran-reader-src/      কুরআন রিডারের সোর্স (Next.js, স্ট্যাটিক এক্সপোর্ট)
-├── .github/workflows/pages.yml    বিল্ড ও ডিপ্লয় (GitHub Actions)
-├── docs/uqns-notes.md     UQNS-এর আগের ডিজাইন ও ডেটা নোট
-└── tools/                 পৃষ্ঠার ছবি তৈরি ও অডিও যাচাইয়ের স্ক্রিপ্ট
+├── content/
+├── data/
+├── localization/
+├── navigation/
+├── search/
+├── reader/
+├── audio/
+├── study/
+├── analytics/
+├── api/
+├── apps/
+├── profiles/
+├── documentation/
+└── governance/
 ```
 
-## ডিপ্লয় করা (GitHub Pages)
+[⬆️ উপরে ফিরে যান](#top)
 
-1. রিপোজিটরির নাম হতে হবে **`mj-ahmad.github.io`** (তাহলে ঠিকানা হবে `https://mj-ahmad.github.io/`)। এই ফোল্ডারের সব ফাইল `main` ব্রাঞ্চে পুশ করুন।
-2. GitHub-এ **Settings → Pages → Build and deployment → Source: GitHub Actions** নির্বাচন করুন।
-3. **Actions** ট্যাবে "Deploy to GitHub Pages" চলবে। এটি প্রথমে কুরআন রিডার বিল্ড করে (`npm run build`), তারপর দুটি অংশ একসঙ্গে সাজিয়ে ডিপ্লয় করে।
-4. সফল হলে দুটি ঠিকানা খুলুন: রুট ও `/quran-reader/`।
+---
 
-স্থানীয়ভাবে:
+## Layer 01 — Foundation Layer
 
-```bash
-# UQNS হোম পেজ: যেকোনো স্ট্যাটিক সার্ভার
-python3 -m http.server 8080            # http://localhost:8080
+```text
+quran-navigation/
 
-# কুরআন রিডার (ডেভেলপমেন্ট)
-cd quran-reader-src
-npm install
-npm run dev                            # http://localhost:3000/quran-reader/
-npm run build                          # স্ট্যাটিক আউটপুট: quran-reader-src/out
+├── assets/
+├── content/
+├── data/
+├── localization/
+├── search/
+├── navigation/
+├── reader/
+├── audio/
+├── study/
+├── analytics/
+├── api/
+├── apps/
+├── documentation/
+└── governance/
 ```
 
-> লোকাল রিডারের জন্য `/quran-reader/` পাথ দিয়ে খুলুন। ডাবল-ক্লিকে (`file://`) রিডার কাজ করবে না; একটি সার্ভার দরকার।
+[⬆️ উপরে ফিরে যান](#top)
 
-## শেয়ার সিস্টেম
+---
 
-- **Open Graph ও Twitter কার্ড:** হোম পেজে `og:title`, `og:description`, `og:url`, `og:image` (1200×630), `twitter:card` সেট করা আছে। WhatsApp, Facebook, Telegram, X, LinkedIn ও iMessage-এ লিংক দিলে লোগো, হেডিং ও বর্ণনা দেখায়।
-- **ক্যানোনিক ঠিকানা:** `https://mj-ahmad.github.io/` (`<link rel="canonical">`, sitemap ও JSON-LD-তেও একই)।
-- **শেয়ার বোতাম:** হোম পেজের নিচে "UQNS শেয়ার করুন" সেকশনে Share (ডিভাইসের শেয়ার মেনু, শুধু সমর্থিত ডিভাইসে), লিংক কপি, WhatsApp, Telegram, Facebook, X ও ইমেইল। ভাষা বদলালে এই বোতামের লেখাও বদলায়।
-- **প্রিভিউ যাচাই:** https://developers.facebook.com/tools/debug/ , https://www.opengraph.xyz/ , X-এর Card Validator দিয়ে `https://mj-ahmad.github.io/` পরীক্ষা করুন। আগে পরিবর্তন হলে Facebook-এর Debugger-এ "Scrape Again" চাপুন, কারণ সেখানে পুরনো ক্যাশ থাকে।
-- **নতুন শেয়ার কার্ড:** `assets/share/og-image.png` বদলান (1200×630, PNG বা JPG)। ফাইলের নাম একই রাখুন।
+## Layer 02 — Quran Content Universe
 
-## অ্যান্ড্রয়েড অ্যাপ
+```text
+content/
 
-### ১. এখনই: Chrome থেকে ইনস্টল (PWA)
-
-Android-এর Chrome-এ `https://mj-ahmad.github.io/` খুলুন। হোম পেজের "আপনার ফোনে UQNS নিন" সেকশনে **Install Android app** বোতাম আসবে (অথবা Chrome মেনু → Install app)। ইনস্টল হলে হোম স্ক্রিনে আইকন আসবে এবং অ্যাপ ফুল-স্ক্রিনে খুলবে। কুরআন রিডারও এই অ্যাপের ভেতরে চলে।
-
-iPhone/iPad-এ: Safari → Share → Add to Home Screen।
-
-### ২. Play Store-এর জন্য APK/AAB (Trusted Web Activity)
-
-প্রজেক্টে `android/twa-manifest.json` প্রস্তুত আছে (প্যাকেজ নাম `io.github.mjahmad.uqns`; চাইলে বদলান)।
-
-```bash
-npm i -g @bubblewrap/cli
-mkdir uqns-android && cd uqns-android
-bubblewrap init --manifest https://mj-ahmad.github.io/manifest.webmanifest
-# android/twa-manifest.json-এর মান এখানে বসাতে পারেন, অথবা প্রশ্নের উত্তর দিন
-bubblewrap build                       # app-release-signed.apk ও .aab তৈরি করবে
+├── arabic/
+├── english/
+├── bangla/
+└── multilingual/
 ```
 
-Bubblewrap প্রথমবার একটি সাইনিং কী (keystore) তৈরি করতে বলবে। **কী-ফাইল ও পাসওয়ার্ড নিরাপদে রাখুন**; হারালে পরের আপডেট দেওয়া যাবে না।
+Arabic
 
-তারপর সাইনিং কীর SHA-256 বের করুন:
+```text
+content/arabic/
 
-```bash
-keytool -list -v -keystore android.keystore -alias uqns | grep SHA256
+├── quran-text/
+├── quran-font/
+├── quran-metadata/
+├── tajweed/
+└── manjumah/
 ```
 
-এই ফিঙ্গারপ্রিন্ট `.well-known/assetlinks.json`-এ `REPLACE_WITH_YOUR_SIGNING_KEY_SHA256_FINGERPRINT`-এর জায়গায় বসান, তারপর আবার পুশ করুন। এতে অ্যাপের ভেতরে URL বার দেখাবে না। (Google Play Console-এ আপলোড করার আগে "App signing" থেকে ফিঙ্গারপ্রিন্টটি Play-এর কী-র সঙ্গে মিলিয়ে নিন।)
+English
 
-## পরিবর্তনের সারসংক্ষেপ
+```text
+content/english/
 
-**UQNS হোম পেজ**
-- হোম পেজের ৬টি "কুরআন পড়ুন/Read" লিংক (নেভিগেশন ও কল-টু-অ্যাকশন বোতাম) পুরনো `reader.html`-এর বদলে `quran-reader/`-এ যায়।
-- হেড: SEO বর্ণনা, canonical, Open Graph, Twitter কার্ড, আইকন, manifest, Apple ওয়েব-অ্যাপ ট্যাগ, JSON-LD।
-- নিচে নতুন "অ্যাপ ইনস্টল ও শেয়ার" সেকশন।
-- স্প্ল্যাশ, হোম পেজের লেখা, ডিজাইন ও ভাষা-টগল অপরিবর্তিত।
+├── sahih-international/
+├── the-clear-quran/
+├── pickthall/
+├── yusuf-ali/
+└── transliteration/
+```
 
-**কুরআন রিডার (স্ট্যাটিক হোস্টিংয়ের জন্য)**
-- `output: "export"`, `basePath: /quran-reader`, `trailingSlash: true`। GitHub Pages সার্ভার চলে না, তাই সবকিছু আগে থেকে তৈরি HTML।
-- `/api/search` সার্ভার রুট সরানো হয়েছে। আরবি সার্চ এখন ব্রাউজারে হয় (প্রথম সার্চে সূচি লোড হয়)।
-- সূরা, পারা ও পৃষ্ঠার পেজ আগে থেকে তৈরি হয় (`generateStaticParams`: ১১৪ সূরা, ৩০ পারা, ৬০৪ পৃষ্ঠা)।
-- `?tr=` (অনুবাদ), `?print=` (মুসহাফ ধরন) এখন ব্রাউজারে পড়া হয়, তাই সেগুলো বদলালে ঠিকঠাক কাজ করে।
-- পুরনো `manifest` ও `og.png` সরানো হয়েছে; অ্যাপ-ম্যানিফেস্ট এখন রুটের একটিই।
+Bangla
 
-## নিরাপত্তা ও গুণমান
+```text
+content/bangla/
 
-- সার্ভার কোড ছাড়া সবকিছু স্ট্যাটিক, তাই হ্যাকের মতো সার্ভার-পৃষ্ঠ নেই।
-- সার্ভিস ওয়ার্কার শুধু নিজের সাইটের অ্যাসেট ক্যাশ করে, তিলাওয়াত অডিও (everyayah.com) ও `/quran-reader/`-এর ট্রাফিক ধরে না।
-- কোনো API কী, সিক্রেট বা ব্যক্তিগত তথ্য কোডে নেই।
-- ক্যাশ আপডেট: `sw.js`-এর `VERSION` বদলালে ভিজিটররা নতুন ফাইল পাবেন।
+├── transliteration/
+└── simplified/
+```
 
-## যা আমি এই পরিবেশে যাচাই করতে পারিনি (প্রকাশের আগে করুন)
+[⬆️ উপরে ফিরে যান](#top)
 
-- **Next.js বিল্ড:** এখানে npm ইন্টারনেট ছাড়া চলে না, তাই `npm run build` চালানো হয়নি। GitHub Actions-এ প্রথম রানে বিল্ড হবে। কোনো TypeScript ত্রুটি হলে Actions লগে দেখাবে। প্রথমবার `quran-reader-src/` ফোল্ডারে `npm install` চালিয়ে `npm run build` একবার নিজের মেশিনে চালিয়ে নেওয়া ভালো।
-- **তিলাওয়াত অডিও:** অডিওর ফোল্ডার নাম আসল সার্ভারের সঙ্গে মিলে কি না, তা ইন্টারনেট-সংযুক্ত মেশিনে `python3 quran-reader-src/tools/check_audio.py` (অথবা `tools/check_audio.py`) দিয়ে যাচাই করুন।
-- **কুরআনিক উদ্ধৃতি ও অনুবাদ:** প্রকাশের আগে একজন আলেম দিয়ে মিলিয়ে নিন (আগের `docs/uqns-notes.md`-তেও একই পরামর্শ)। অনুবাদের লাইসেন্স শর্তও নিশ্চিত করুন।
-- **প্রকৃত ডিভাইসে পরীক্ষা:** Android Chrome-এ ইনস্টল বোতাম, শেয়ার, মুসহাফ স্ক্রল, এবং অনুবাদ পরিবর্তন।
+---
 
-## জানা সীমাবদ্ধতা
+## Layer 03 — Navigation Universe
 
-- কুরআন রিডার অফলাইনে পুরোপুরি চলে না: প্রথমবার দেখা পৃষ্ঠাগুলো ব্রাউজার ক্যাশে থাকে, কিন্তু রিডারের পৃষ্ঠা ও অডিও সার্ভিস ওয়ার্কার ক্যাশ করে না। হোম পেজ ও মুসহাফ ভিউয়ার অফলাইনে খোলা যায়।
-- UQNS-এর সার্চ ফলাফল এখনো পুরনো `reader.html`-এর আয়াত-পৃষ্ঠায় যায় (ডিপ লিংকের কারণে রাখা হয়েছে)। ভবিষ্যতে এগুলোকেও কুরআন রিডারের `/surah/N/#ayah-N`-এ নিয়ে যাওয়া যাবে।
-- বাংলা সূরার নাম এখনো কুরআন রিডারের ডেটায় আছে, UQNS-এর সূরা নামগুলো ইংরেজি ট্রান্সলিটারেশনে।
+```text
+navigation/
+
+├── page-navigation/
+├── surah-navigation/
+├── juz-navigation/
+├── hizb-navigation/
+├── rukuh-navigation/
+├── ayah-navigation/
+├── sajdah-navigation/
+├── topic-navigation/
+└── bookmark-navigation/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 04 — Quran Page Universe
+
+604 PNG Pages এখানে থাকবে:
+
+```text
+data/
+
+└── quran-pages/
+
+    ├── 001.png
+    ├── 002.png
+    ...
+    └── 604.png
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 05 — Quran Structure Database
+
+```text
+data/quran/
+
+├── surahs.json
+├── juz.json
+├── hizb.json
+├── rub.json
+├── rukuh.json
+├── sajdah.json
+├── pages.json
+├── ayahs.json
+└── topics.json
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 06 — Localization System
+
+প্রাথমিক পর্যায়ে তিন ভাষা:
+
+```text
+localization/
+
+├── ar/
+├── en/
+└── bn/
+```
+
+প্রতিটি ভাষার ফোল্ডারে:
+
+```text
+localization/ar/   (একই কাঠামো en/ ও bn/-তেও)
+
+├── common.json
+├── menu.json
+├── reader.json
+├── search.json
+└── settings.json
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 07 — Search Universe
+
+```text
+search/
+
+├── global-search/
+├── surah-search/
+├── ayah-search/
+├── page-search/
+├── topic-search/
+├── translation-search/
+└── semantic-search/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 08 — Reader Universe
+
+```text
+reader/
+
+├── page-reader/
+├── mushaf-reader/
+├── ayah-reader/
+├── translation-reader/
+├── comparison-reader/
+└── dark-mode-reader/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 09 — Audio Universe
+
+```text
+audio/
+
+├── reciters/
+├── streaming/
+└── playlists/
+```
+
+Reciters
+
+```text
+audio/reciters/
+
+├── mishaby/
+├── ali-jaber/
+├── jebryl/
+├── husary/
+├── hujyfi/
+└── basit/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 10 — Study Universe
+
+```text
+study/
+
+├── tafsir/
+├── notes/
+├── highlights/
+├── bookmarks/
+├── lessons/
+├── classroom/
+└── personal-library/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 11 — User Profile Universe
+
+```text
+profiles/
+
+├── students/
+├── teachers/
+├── admins/
+└── guests/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 12 — Analytics Universe
+
+ML.NET Vision-এর জন্য:
+
+```text
+analytics/
+
+├── reading-progress/
+├── habits/
+├── streaks/
+├── completion/
+├── recommendations/
+└── predictions/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 13 — API Universe
+
+```text
+api/
+
+├── quran/
+├── navigation/
+├── search/
+├── translation/
+├── audio/
+└── analytics/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 14 — Apps Universe
+
+```text
+apps/
+
+├── web/
+├── pwa/
+├── android/
+├── ios/
+├── desktop/
+└── kiosk/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 15 — Documentation Universe
+
+```text
+documentation/
+
+├── architecture/
+├── branding/
+├── governance/
+├── api/
+├── database/
+├── onboarding/
+└── tutorials/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Layer 16 — Governance Universe
+
+> এটি হচ্ছে Vision-এর সবচেয়ে গুরুত্বপূর্ণ অংশ।
+
+```text
+governance/
+
+├── constitution/
+├── stewardship/
+├── policies/
+├── ethics/
+├── branding/
+├── security/
+└── inheritance/
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Language Expansion Roadmap
+
+Phase 1:
+
+```text
+ar = Arabic
+en = English
+bn = Bangla
+```
+
+Phase 2:
+
+```text
+ur = Urdu
+hi = Hindi
+id = Indonesian
+tr = Turkish
+```
+
+Phase 3:
+
+```text
+fr = French
+de = German
+es = Spanish
+ru = Russian
+zh = Chinese
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Long-Term Vision
+
+> Quran Navigation is a multilingual, multi-device, governance-driven Quran knowledge infrastructure that enables page, surah, juz, ayah, topic, translation, audio, study, and learning navigation through a unified stewardship-oriented ecosystem.
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Branding Layer
+
+```text
+assets/branding/logos/
+├── identity
+├── brand-guidelines
+├── manifest
+├── open-graph
+├── social
+├── favicon
+├── app-icons
+├── responsive
+├── seal
+├── source
+└── ...
+```
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+## Task
+
+`2026-11-05`
+
+- **Phase-01:** Foundation Layer Structure Setup
+
+`quran-navigation/`
+- [ ] assets/
+- [ ] content/
+- [ ] data/
+- [ ] localization/
+- [ ] search/
+- [ ] navigation/
+- [ ] reader/
+- [ ] audio/
+- [ ] study/
+- [ ] analytics/
+- [ ] api/
+- [ ] apps/
+- [ ] documentation/
+- [ ] governance/
+
+- **Pash-02:** 
+
+> Keyboard shortcuts: **Cmd/Ctrl + B** bold · **Cmd/Ctrl + I** italic · **Cmd/Ctrl + K** link · **Cmd/Ctrl + S** download.
+
+[⬆️ উপরে ফিরে যান](#top)
+
+---
+
+### Ongoing Projects
+
+<details open>
+<summary>Quraner Fariwala</summary>
+
+A global Qur’anic knowledge, education, research and human development infrastructure.
+
+### Development Areas
+
+- Digital Mushaf Infrastructure
+- Qur'an Navigation Systems
+- Advanced Arabic Search
+- Multilingual Search
+- Multi-source Tafseer Integration
+- Thematic Exploration
+- Knowledge Mapping
+- Research Infrastructure
+- Learning Platforms
+- Human Development Systems
+
+</details>
+
+---
+
+<details>
+<summary>Qur'an Navigation Platform</summary>
+
+A next-generation Qur'anic navigation and research environment.
+
+### Features
+
+- Vector Mushaf
+- Ayah Navigation
+- Surah Navigation
+- Juz Navigation
+- Hizb Navigation
+- Ruku Navigation
+- Semantic Search
+- Root Word Search
+- Cross References
+- Audio Synchronization
+- Multi Language Translation
+- Research Workspace
+
+</details>
+
+---
+
+<details>
+<summary>Quran Memorize Ecosystem</summary>
+
+Educational Management Infrastructure.
+
+### Components
+
+- Student Portal
+- Teacher Portal
+- Supervisor Dashboard
+- Principal Dashboard
+- Analytics Engine
+- Reporting System
+- Attendance System
+- Academic Tracking
+- Governance Framework
+
+</details>
+
+---
+
+### Knowledge Infrastructure
+
+<details>
+<summary>Documentation Systems</summary>
+
+- Markdown Documentation
+- Knowledge Base
+- Wiki Systems
+- Governance Documents
+- Public Archives
+
+</details>
+
+<details>
+<summary>Research Systems</summary>
+
+- Qur'anic Research
+- Knowledge Mapping
+- Analytics
+- AI Research
+- Human Development Studies
+
+</details>
+
+<details>
+<summary>Artificial Intelligence</summary>
+
+- ML.NET
+- Educational Analytics
+- Prediction Systems
+- AI Assisted Learning
+- Knowledge Discovery
+
+</details>
